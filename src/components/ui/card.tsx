@@ -2,16 +2,7 @@ import * as React from "react"
 
 import { cn } from "@/lib/utils"
 
-/**
- * Card container component.
- * Main wrapper for card content.
- * 
- * @param {Object} props - Card props
- * @param {string} props.className - Additional CSS classes
- * @param {...React.ComponentProps<"div">} props - All standard div HTML attributes
- * @returns {JSX.Element} Card container
- */
-function Card({ className, ...props }: React.ComponentProps<"div">): JSX.Element {
+function Card({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       data-slot="card"
@@ -24,16 +15,7 @@ function Card({ className, ...props }: React.ComponentProps<"div">): JSX.Element
   )
 }
 
-/**
- * Card header component.
- * Container for card title and description.
- * 
- * @param {Object} props - CardHeader props
- * @param {string} props.className - Additional CSS classes
- * @param {...React.ComponentProps<"div">} props - All standard div HTML attributes
- * @returns {JSX.Element} Card header
- */
-function CardHeader({ className, ...props }: React.ComponentProps<"div">): JSX.Element {
+function CardHeader({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       data-slot="card-header"
@@ -46,16 +28,7 @@ function CardHeader({ className, ...props }: React.ComponentProps<"div">): JSX.E
   )
 }
 
-/**
- * Card title component.
- * Displays the main title of the card.
- * 
- * @param {Object} props - CardTitle props
- * @param {string} props.className - Additional CSS classes
- * @param {...React.ComponentProps<"div">} props - All standard div HTML attributes
- * @returns {JSX.Element} Card title
- */
-function CardTitle({ className, ...props }: React.ComponentProps<"div">): JSX.Element {
+function CardTitle({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       data-slot="card-title"
@@ -65,16 +38,7 @@ function CardTitle({ className, ...props }: React.ComponentProps<"div">): JSX.El
   )
 }
 
-/**
- * Card description component.
- * Displays secondary text below the card title.
- * 
- * @param {Object} props - CardDescription props
- * @param {string} props.className - Additional CSS classes
- * @param {...React.ComponentProps<"div">} props - All standard div HTML attributes
- * @returns {JSX.Element} Card description
- */
-function CardDescription({ className, ...props }: React.ComponentProps<"div">): JSX.Element {
+function CardDescription({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       data-slot="card-description"
@@ -84,16 +48,7 @@ function CardDescription({ className, ...props }: React.ComponentProps<"div">): 
   )
 }
 
-/**
- * Card action component.
- * Container for action buttons or links in the card header.
- * 
- * @param {Object} props - CardAction props
- * @param {string} props.className - Additional CSS classes
- * @param {...React.ComponentProps<"div">} props - All standard div HTML attributes
- * @returns {JSX.Element} Card action
- */
-function CardAction({ className, ...props }: React.ComponentProps<"div">): JSX.Element {
+function CardAction({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       data-slot="card-action"
@@ -106,16 +61,7 @@ function CardAction({ className, ...props }: React.ComponentProps<"div">): JSX.E
   )
 }
 
-/**
- * Card content component.
- * Main content area of the card.
- * 
- * @param {Object} props - CardContent props
- * @param {string} props.className - Additional CSS classes
- * @param {...React.ComponentProps<"div">} props - All standard div HTML attributes
- * @returns {JSX.Element} Card content
- */
-function CardContent({ className, ...props }: React.ComponentProps<"div">): JSX.Element {
+function CardContent({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       data-slot="card-content"
@@ -125,16 +71,7 @@ function CardContent({ className, ...props }: React.ComponentProps<"div">): JSX.
   )
 }
 
-/**
- * Card footer component.
- * Container for footer content at the bottom of the card.
- * 
- * @param {Object} props - CardFooter props
- * @param {string} props.className - Additional CSS classes
- * @param {...React.ComponentProps<"div">} props - All standard div HTML attributes
- * @returns {JSX.Element} Card footer
- */
-function CardFooter({ className, ...props }: React.ComponentProps<"div">): JSX.Element {
+function CardFooter({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       data-slot="card-footer"

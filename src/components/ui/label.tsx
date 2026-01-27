@@ -5,19 +5,10 @@ import * as LabelPrimitive from "@radix-ui/react-label"
 
 import { cn } from "@/lib/utils"
 
-/**
- * Label component.
- * Accessible label element built on Radix UI primitives.
- * 
- * @param {Object} props - Label props
- * @param {string} props.className - Additional CSS classes
- * @param {...React.ComponentProps<typeof LabelPrimitive.Root>} props - All standard label HTML attributes
- * @returns {JSX.Element} Label element
- */
 function Label({
   className,
   ...props
-}: React.ComponentProps<typeof LabelPrimitive.Root>): JSX.Element {
+}: React.ComponentProps<typeof LabelPrimitive.Root>) {
   return (
     <LabelPrimitive.Root
       data-slot="label"

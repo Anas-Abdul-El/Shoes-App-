@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { loginSchema, type LoginSchemaType } from "@/../../schemas/form-schema"
+import { loginSchema, type LoginSchemaType } from "../../../schemas/form-schema"
 import { useState, useTransition } from "react"
 import { loginInAction } from "../../../server/login-form-action"
 import {
@@ -59,7 +59,7 @@ export function LoginForm() {
   }
 
   return (
-    <Card className="w-full max-w-md">
+    <Card className="w-80 max-w-md dark ">
       <CardHeader>
         <CardTitle>Login</CardTitle>
         <CardDescription>
@@ -109,14 +109,14 @@ export function LoginForm() {
                 <p className="text-red-500 ml-2">{error}</p>
               </div>
             }
-            <Button type="submit" className="w-full" disabled={isLoading}>
+            <Button type="submit" className="w-full mt-4" disabled={isLoading}>
               Login
             </Button>
           </form>
         </Form>
         <CardFooter>
-          <div className="mb-4 text-sm text-center">
-            <Link href="/sign-in" className="text-black hover:underline">
+          <div className="mb-4 mt-5 text-sm text-center">
+            <Link href="/sign-in" className="hover:underline ">
               create an account
             </Link>
           </div>

@@ -59,11 +59,11 @@ export function SignInForm() {
 
 
   return (
-    <Card className="w-full max-w-md">
+    <Card className="w-80 max-w-md dark ">
       <CardHeader>
         <CardTitle>Sign In</CardTitle>
         <CardDescription>
-          Enter your email and password to sign in to your account.
+          Enter your name, email and password to sign in to your account.
         </CardDescription>
       </CardHeader>
       <CardContent>
@@ -132,8 +132,8 @@ export function SignInForm() {
           </form>
         </Form>
         <CardFooter>
-          <div className="mb-4 text-sm text-center">
-            <Link href="/login" className="text-black hover:underline">
+          <div className=" my-5 text-sm text-center">
+            <Link href="/login" className="hover:underline">
               Already have an account?
             </Link>
           </div>

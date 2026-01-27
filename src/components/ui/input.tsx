@@ -2,17 +2,7 @@ import * as React from "react"
 
 import { cn } from "@/lib/utils"
 
-/**
- * Input component.
- * Styled input element with focus states and validation styling.
- * 
- * @param {Object} props - Input props
- * @param {string} props.className - Additional CSS classes
- * @param {string} props.type - Input type (text, email, password, etc.)
- * @param {...React.ComponentProps<"input">} props - All standard input HTML attributes
- * @returns {JSX.Element} Input element
- */
-function Input({ className, type, ...props }: React.ComponentProps<"input">): JSX.Element {
+function Input({ className, type, ...props }: React.ComponentProps<"input">) {
   return (
     <input
       type={type}

@@ -12,3 +12,169 @@ generator client {
 datasource db {
   provider = "postgresql"
 }
+
+enum Role {
+  USER
+  ADMIN
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String  @map("user_id")
+  type              String
+  provider          String
+  providerAccountId String  @map("provider_account_id")
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+  @@map("accounts")
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique @map("session_token")
+  userId       String   @map("user_id")
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("sessions")
+}
+
+model User {
+  id             String          @id @default(cuid())
+  name           String?
+  email          String?         @unique
+  password       String?
+  role           Role            @default(USER)
+  emailVerified  DateTime?       @map("email_verified")
+  image          String?
+  accounts       Account[]
+  sessions       Session[]
+  orders         Order[]
+  productReviews ProductReview[]
+  cartItems      CartItem[]
+  userAddresses  address[]
+  activityLogs   ActivityLog[]
+
+  @@map("users")
+}
+
+enum Category {
+  ALL
+  RUNNING
+  CASUAL
+  SPORTS
+  BOOTS
+}
+
+model Product {
+  id          String   @id @default(cuid())
+  name        String
+  description String
+  price       Float
+  oldPrice    Float    @map("old_price")
+  category    Category @default(ALL)
+  imageUrl    String   @map("image_url")
+
+  orderItems     OrderItem[]
+  productReviews ProductReview[]
+  cartItems      CartItem[]
+
+  @@map("products")
+}
+
+model Order {
+  id           String        @id @default(cuid())
+  userId       String        @map("user_id")
+  totalPrice   Float         @map("total_price")
+  createdAt    DateTime      @default(now()) @map("created_at")
+  user         User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  orderItems   OrderItem[]
+  activityLogs ActivityLog[]
+
+  @@map("orders")
+}
+
+model OrderItem {
+  id        String @id @default(cuid())
+  orderId   String @map("order_id")
+  productId String @map("product_id")
+  quantity  Int
+  price     Float
+
+  order   Order   @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  product Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  @@map("order_items")
+}
+
+model ProductReview {
+  id        String   @id @default(cuid())
+  productId String   @map("product_id")
+  userId    String   @map("user_id")
+  rating    Int
+  comment   String?
+  createdAt DateTime @default(now()) @map("created_at")
+
+  product Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+  user    User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("product_reviews")
+}
+
+model CartItem {
+  id        String @id @default(cuid())
+  userId    String @map("user_id")
+  productId String @map("product_id")
+  quantity  Int
+
+  user    User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  product Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, productId])
+  @@map("cart_items")
+}
+
+model address {
+  id      String @id @default(cuid())
+  userId  String @map("user_id")
+  street  String
+  city    String
+  state   String
+  zipCode String @map("zip_code")
+  country String
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("addresses")
+}
+
+enum ActivityType {
+  LOGIN
+  LOGOUT
+  PURCHASE
+  REVIEW
+  UPDATE_PROFILE
+}
+
+model ActivityLog {
+  id        String       @id @default(uuid())
+  type      ActivityType
+  userId    String
+  action    String
+  details   Json?
+  createdAt DateTime     @default(now())
+  orderId   String?
+
+  user User @relation(fields: [userId], references: [id])
+
+  order Order? @relation(fields: [orderId], references: [id])
+}
