@@ -6,28 +6,36 @@ import { loginSchema } from "@/../schemas/form-schema"
 import bcrypt from "bcrypt"
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
+    secret: process.env.AUTH_SECRET,
+    session: {
+        strategy: "jwt",
+    },
     providers: [Credentials({
         async authorize(credentials) {
-            const validateData = loginSchema.safeParse(credentials);
+            try {
+                const validateData = loginSchema.parse(credentials);
 
-            if (!validateData.success) return null
+                const { email, password } = validateData
 
-            const { email, password } = validateData.data
+                const acc = await prisma.user.findUnique({
+                    where: { email }
+                })
 
-            const acc = await prisma.user.findUnique({
-                where: { email }
-            })
+                if (!acc || !acc.password) return null
 
-            if (!acc || !acc.password) return null
+                const isPasswordMatch = await bcrypt.compare(
+                    password,
+                    acc.password
+                )
 
-            const isPasswordMatch = await bcrypt.compare(
-                password,
-                acc.password
-            )
+                if (!isPasswordMatch) return null
 
-            if (!isPasswordMatch) return null
+                return acc
+            } catch (error) {
+                console.error("Error in authorize function:", error);
+                return null;
+            }
 
-            return acc
         },
     })],
     callbacks: {
@@ -54,10 +62,6 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
             }
             return token
         },
-
-        signIn: async ({ user }) => {
-            return true
-        }
     },
     adapter: PrismaAdapter(prisma),
 

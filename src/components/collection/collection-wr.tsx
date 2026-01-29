@@ -1,13 +1,17 @@
 
 import CollectionsContect from './Collections-Contect'
 import CollectionsHeader from './Collections-Header'
+import prisma from "@/lib/prisma";
 
-function CollectionsWr() {
+async function CollectionsWr() {
+
+    const products = await prisma.product.findMany();
+
     return (
         <>
             <CollectionsHeader />
 
-            <CollectionsContect />
+            <CollectionsContect products={products} />
         </>
     )
 }

@@ -51,7 +51,7 @@ function Nav() {
                     })
                 }
                 <li>
-                    <Link href="...">
+                    <Link href="/cart">
                         <ShoppingBag size={24} />
                     </Link>
                 </li>

@@ -96,6 +96,7 @@ export function SignInForm() {
                     <Input
                       type="email"
                       placeholder="name@example.com"
+                      autoComplete="email"
                       {...field}
                     />
                   </FormControl>
@@ -113,6 +114,7 @@ export function SignInForm() {
                     <Input
                       type="password"
                       placeholder="Enter your password"
+                      autoComplete="new-password"
                       {...field}
                     />
                   </FormControl>
