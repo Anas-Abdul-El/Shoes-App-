@@ -72,7 +72,7 @@ function ItemsWr({
                                         )
                                     }
                                 </div>
-                                <div className="flex flex-col sm:w-50 space-y-3">
+                                <div className="flex flex-col sm:w-50 space-y-3 items-center">
                                     <Button
                                         variant={"default"}
                                         className={`bg-black p-4 cursor-pointer w-full h-full hover:bg-zinc-700`}
@@ -90,7 +90,7 @@ function ItemsWr({
                                     </Button>
                                     {
                                         isClicked && (
-                                            <div className="bg-black p-4 cursor-pointer w-full h-full  border border-gray-400 rounded-xl">
+                                            <div className="bg-black p-4 cursor-pointer w-7/6 h-full  border border-gray-400 rounded-xl">
                                                 <form action={formAction} className="flex justify-evenly items-center flex-col space-y-4">
                                                     <div className="flex justify-evenly items-center w-full">
                                                         <label htmlFor="quantity">Quantity:</label>

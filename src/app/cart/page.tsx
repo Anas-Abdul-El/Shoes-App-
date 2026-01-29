@@ -4,10 +4,7 @@ import prisma from '@/lib/prisma'
 
 async function Page() {
 
-    const user = await auth()
-
-    console.log(user);
-
+    const user = await auth();
 
     const id = user?.id
 
@@ -15,14 +12,13 @@ async function Page() {
         where: {
             userId: id
         },
+        include: {
+            product: true
+        }
     })
 
-    const products = cart.map(async (ele) => {
-        return await prisma.product.findUnique({
-            where: {
-                id: ele.productId
-            }
-        })
+    const products = cart.map(ele => {
+        return { ...ele.product, cardQuantity: ele.quantity }
     })
 
     return (
