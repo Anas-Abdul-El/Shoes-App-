@@ -23,7 +23,7 @@ async function Page() {
 
     return (
         <main className='w-screen h-screen flex justify-center items-center p-0 m-0 box-border'>
-            <CartWr products={products} />
+            <CartWr products={products} id={id} />
         </main>
     )
 }

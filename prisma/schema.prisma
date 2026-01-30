@@ -142,7 +142,7 @@ model address {
   street  String
   city    String
   state   String
-  zipCode String @map("zip_code")
+  zipCode Int    @map("zip_code")
   country String
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)

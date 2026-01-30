@@ -35,6 +35,37 @@ export const loginSchema = z.object({
 })
 
 /**
+ * Zod schema for address form validation.
+ * Validates street, city, state, zipCode, and country fields.
+ */
+export const addressSchema = z.object({
+    /** User's street address - must be at least 1 character */
+    street: z.string().min(1, {
+        message: "Please enter your street address.",
+    }),
+    /** User's city - must be at least 1 character */
+    city: z.string().min(1, {
+        message: "Please enter your city.",
+    }),
+    /** User's state - must be at least 1 character */
+    state: z.string().min(1, {
+        message: "Please enter your state.",
+    }),
+    /** User's zip code - must be a number between 4 and 8 digits */
+    zipCode: z.number()
+        .min(4, {
+            message: "Please enter your zip code.",
+        }).max(8, {
+            message: "Zip code is too long.",
+        }),
+    /** User's country - must be at least 1 character */
+    country: z.string().min(1, {
+        message: "Please enter your country.",
+    }),
+})
+
+
+/**
  * TypeScript type inferred from formSchema.
  * Represents the shape of data for sign-in forms.
  */
@@ -45,3 +76,9 @@ export type FormSchemaType = z.infer<typeof formSchema>
  * Represents the shape of data for login forms.
  */
 export type LoginSchemaType = z.infer<typeof loginSchema>
+
+/**
+ * TypeScript type inferred from loginSchema.
+ * Represents the shape of data for address forms.
+ */
+export type AddressSchemaType = z.infer<typeof addressSchema>
