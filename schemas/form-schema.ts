@@ -52,7 +52,7 @@ export const addressSchema = z.object({
         message: "Please enter your state.",
     }),
     /** User's zip code - must be a number between 4 and 8 digits */
-    zipCode: z.number()
+    zipCode: z.string()
         .min(4, {
             message: "Please enter your zip code.",
         }).max(8, {

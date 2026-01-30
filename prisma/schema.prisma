@@ -49,19 +49,20 @@ model Session {
 }
 
 model User {
-  id            String        @id @default(cuid())
+  id            String    @id @default(cuid())
   name          String?
-  email         String?       @unique
+  email         String?   @unique
   password      String?
-  role          Role          @default(USER)
-  emailVerified DateTime?     @map("email_verified")
-  image         String?
-  accounts      Account[]
-  sessions      Session[]
-  orders        Order[]
-  cartItems     CartItem[]
-  userAddresses address[]
-  activityLogs  ActivityLog[]
+  role          Role      @default(USER)
+  emailVerified DateTime? @map("email_verified")
+
+  image        String?
+  accounts     Account[]
+  sessions     Session[]
+  orders       Order[]
+  cartItems    CartItem[]
+  address      address?
+  activityLogs ActivityLog[]
 
   @@map("users")
 }
@@ -99,10 +100,11 @@ model Product {
 }
 
 model Order {
-  id           String        @id @default(cuid())
-  userId       String        @map("user_id")
-  totalPrice   Float         @map("total_price")
-  createdAt    DateTime      @default(now()) @map("created_at")
+  id         String   @id @default(cuid())
+  userId     String   @map("user_id")
+  totalPrice Float    @map("total_price")
+  createdAt  DateTime @default(now()) @map("created_at")
+
   user         User          @relation(fields: [userId], references: [id], onDelete: Cascade)
   orderItems   OrderItem[]
   activityLogs ActivityLog[]
@@ -138,11 +140,11 @@ model CartItem {
 
 model address {
   id      String @id @default(cuid())
-  userId  String @map("user_id")
+  userId  String @unique @map("user_id")
   street  String
   city    String
   state   String
-  zipCode Int    @map("zip_code")
+  zipCode String @map("zip_code")
   country String
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)

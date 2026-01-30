@@ -36,7 +36,7 @@ export default function AddressWr() {
             street: "",
             city: "",
             state: "",
-            zipCode: 0,
+            zipCode: "",
             country: "",
         },
     })

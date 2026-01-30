@@ -5,8 +5,7 @@ import { Button } from '../ui/button'
 import { Trash2 } from 'lucide-react'
 import { deleteFromCart } from '../../../server/delete-from-cart';
 import { useState, useTransition } from 'react';
-import { set } from 'zod';
-import { start } from 'repl';
+import { checkout } from '../../../server/checkout';
 
 
 function CartWr({
@@ -33,6 +32,13 @@ function CartWr({
         startTransition(() => {
             deleteFromCart(id, productId)
                 .then((res) => setMessage(res?.message))
+        })
+    }
+
+    const handleCheckout = () => {
+        startTransition(() => {
+            checkout()
+                .then((res) => setMessage(res))
         })
     }
 
@@ -72,7 +78,7 @@ function CartWr({
                     })
                 }
                 <Button
-                    onClick={() => { }}
+                    onClick={handleCheckout}
                     className='bg-white w-40 h-15 fixed mx-auto bottom-9 rounded-md flex justify-center items-center cursor-pointer text-black font-bold hover:text-white'>
                     Checkout
                 </Button>
