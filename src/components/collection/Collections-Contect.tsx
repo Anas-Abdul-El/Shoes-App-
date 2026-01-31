@@ -5,6 +5,7 @@ import { redirect } from "next/navigation";
 import { useState } from "react";
 import { Button } from "../ui/button";
 import { Info } from "lucide-react";
+import { useStaggeredAnimation } from "@/hooks/useAnimation";
 
 
 
@@ -55,12 +56,12 @@ type Products = Product[];
 
 function CollectionsContect({ products }: { products: Products }) {
 
-
-
     const [filterName, setFilterName] = useState<string>("all")
     const fliteringProduct = (filterName === "all" || filterName == null)
         ? products
         : products.filter(ele => ele.category.toLowerCase() === filterName.toLowerCase())
+
+    const itemsVisible = useStaggeredAnimation(fliteringProduct.length, 300, 100);
 
     const handleFiltersClick = (ele: Filter) => {
         setFilterName(ele.type)
@@ -73,14 +74,14 @@ function CollectionsContect({ products }: { products: Products }) {
     return (
         <div className="flex flex-col md:space-y-10 space-y-20 w-8/10 h-100 mt-43 mx-auto">
 
-            <div className=" w-full md:space-x-2 h-15 flex flex-wrap gap-2">
+            <div className=" w-full md:space-x-2 h-15 flex flex-wrap gap-2 animate-slide-up">
                 {
-                    filters.map(ele => {
+                    filters.map((ele, index) => {
                         return (
                             <div
                                 key={ele.id}
                                 onClick={() => handleFiltersClick(ele)}
-                                className={`capitalize h-1/2 w-fit p-5 flex justify-center items-center rounded-2xl border cursor-pointer 
+                                className={`capitalize h-1/2 w-fit p-5 flex justify-center items-center rounded-2xl border cursor-pointer transition-all duration-500 animation-delay-${(index + 1) * 100}
                                             ${filterName === ele.type ? "bg-white text-black" : "border-white/10 hover:bg-white/9 bg-white/5"}
                                           `}
                             >
@@ -93,10 +94,10 @@ function CollectionsContect({ products }: { products: Products }) {
 
             <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 h-fit mb-10">
                 {
-                    fliteringProduct.map(ele => {
+                    fliteringProduct.map((ele, index) => {
                         return (
                             <div
-                                className="group text-white"
+                                className={`group text-white transition-all duration-500 ${itemsVisible[index] ? 'animate-slide-up opacity-100' : 'opacity-0 translate-y-4'}`}
                                 key={ele.id}
                                 onClick={() => handleProductClick(ele.id)}>
                                 <div className="bg-zinc-900 group-hover:bg-zinc-800 w-full h-100 rounded-xl flex flex-col space-y-5 overflow-hidden cursor-pointer" >

@@ -6,6 +6,7 @@ import { Trash2 } from 'lucide-react'
 import { deleteFromCart } from '../../../server/delete-from-cart';
 import { useState, useTransition } from 'react';
 import { checkout } from '../../../server/checkout';
+import { useStaggeredAnimation } from '@/hooks/useAnimation';
 
 
 function CartWr({
@@ -17,6 +18,7 @@ function CartWr({
 }) {
 
     const [message, setMessage] = useState<string | null>(null);
+    const itemsVisible = useStaggeredAnimation(products.length, 100, 150);
 
     if (!id) {
         return (
@@ -44,12 +46,12 @@ function CartWr({
 
     return (
         <>
-            <div className='bg-zinc-900 w-9/10 md:h-9/13 h-10/12 rounded-xl flex flex-col justify-start items-center p-4 box-border overflow-auto'>
+            <div className='bg-zinc-900 w-9/10 md:h-9/13 h-10/12 rounded-xl flex flex-col justify-start items-center p-4 box-border overflow-auto animate-slide-up'>
                 <p>{message}</p>
                 {
-                    products.map((product) => {
+                    products.map((product, index) => {
                         return (
-                            <div key={product.id} className='w-full md:h-24 h-30 bg-zinc-800 rounded-md mb-4 flex justify-start items-center p-4 box-border border border-zinc-700'>
+                            <div key={product.id} className={`w-full md:h-24 h-30 bg-zinc-800 rounded-md mb-4 flex justify-start items-center p-4 box-border border border-zinc-700 transition-all duration-500 ${itemsVisible[index] ? 'animate-slide-up opacity-100' : 'opacity-0 translate-y-4'}`}>
                                 <div className='h-full w-full flex justify-between items-center'>
                                     <div className='flex justify-start items-center h-full'>
                                         <img src={product.imageUrl} alt={product.name} className='w-16 h-16 object-cover rounded-md mr-4' />

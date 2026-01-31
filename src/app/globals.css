@@ -128,6 +128,73 @@
     background-image: url("https://images.unsplash.com/photo-1695459468644-717c8ae17eed?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxmYXNoaW9uJTIwc25lYWtlcnMlMjBsaWZlc3R5bGV8ZW58MXx8fHwxNzY5MDg5NjYxfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral");
     background-size: cover;
   }
+}
 
+@layer components {
 
+  /* Fade In Animation */
+  .animate-fade-in {
+    @apply animate-in fade-in duration-500;
+  }
+
+  /* Slide In From Bottom */
+  .animate-slide-up {
+    @apply animate-in slide-in-from-bottom-4 duration-500;
+  }
+
+  /* Slide In From Left */
+  .animate-slide-right {
+    @apply animate-in slide-in-from-left-4 duration-500;
+  }
+
+  /* Slide In From Right */
+  .animate-slide-left {
+    @apply animate-in slide-in-from-right-4 duration-500;
+  }
+
+  /* Scale In */
+  .animate-scale-in {
+    @apply animate-in zoom-in-50 duration-500;
+  }
+
+  /* Staggered Animation Delays */
+  .animation-delay-100 {
+    animation-delay: 100ms;
+  }
+
+  .animation-delay-200 {
+    animation-delay: 200ms;
+  }
+
+  .animation-delay-300 {
+    animation-delay: 300ms;
+  }
+
+  .animation-delay-400 {
+    animation-delay: 400ms;
+  }
+
+  .animation-delay-500 {
+    animation-delay: 500ms;
+  }
+
+  .animation-delay-600 {
+    animation-delay: 600ms;
+  }
+
+  .animation-delay-700 {
+    animation-delay: 700ms;
+  }
+
+  .animation-delay-800 {
+    animation-delay: 800ms;
+  }
+
+  .animation-delay-900 {
+    animation-delay: 900ms;
+  }
+
+  .animation-delay-1000 {
+    animation-delay: 1000ms;
+  }
 }
