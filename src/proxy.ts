@@ -7,7 +7,6 @@ import {
     authRoutes
 } from "../route"
 
-
 async function middleware(req: NextRequest) {
     const path = req.nextUrl.pathname;
 
