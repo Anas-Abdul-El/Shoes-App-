@@ -7,8 +7,6 @@ import { Button } from "../ui/button";
 import { Info } from "lucide-react";
 import { useStaggeredAnimation } from "@/hooks/useAnimation";
 
-
-
 type Filter = {
     id: number
     type: string
@@ -56,10 +54,14 @@ type Products = Product[];
 
 function CollectionsContect({ products }: { products: Products }) {
 
+    const AviableProducts = products.filter(ele => {
+        if (ele.quantity) return ele.quantity > 0
+    })
+
     const [filterName, setFilterName] = useState<string>("all")
     const fliteringProduct = (filterName === "all" || filterName == null)
-        ? products
-        : products.filter(ele => ele.category.toLowerCase() === filterName.toLowerCase())
+        ? AviableProducts
+        : AviableProducts.filter(ele => ele.category.toLowerCase() === filterName.toLowerCase())
 
     const itemsVisible = useStaggeredAnimation(fliteringProduct.length, 300, 100);
 
@@ -134,65 +136,3 @@ function CollectionsContect({ products }: { products: Products }) {
 }
 
 export default CollectionsContect
-
-
-
-
-// const prod = [
-//     {
-//         id: 1,
-//         name: "Cloud Runner Pro",
-//         price: 189,
-//         category: "running",
-//         image: "https://images.unsplash.com/photo-1661605813204-8c7662c1a5f8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxibGFjayUyMHJ1bm5pbmclMjBzaG9lc3xlbnwxfHx8fDE3NjkyNTUyOTR8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
-//     },
-//     {
-//         id: 2,
-//         name: "Minimal White",
-//         price: 149,
-//         category: "casual",
-//         image: "https://images.unsplash.com/photo-1573875133340-0b589f59a8c4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3aGl0ZSUyMHNuZWFrZXJzJTIwbWluaW1hbHxlbnwxfHx8fDE3NjkxNjk5NzF8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
-//     },
-//     {
-//         id: 3,
-//         name: "Velocity Sport",
-//         price: 219,
-//         category: "sports",
-//         image: "https://images.unsplash.com/photo-1580058572462-98e2c0e0e2f0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb2xvcmZ1bCUyMGF0aGxldGljJTIwc2hvZXN8ZW58MXx8fHwxNzY5MjU1Mjk1fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
-//     },
-//     {
-//         id: 4,
-//         name: "Urban Explorer",
-//         price: 279,
-//         category: "boots",
-//         image: "https://images.unsplash.com/photo-1652474590303-b4d72bf9f61a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxsZWF0aGVyJTIwYm9vdHMlMjBmYXNoaW9ufGVufDF8fHx8MTc2OTIyNTUzMXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
-//     },
-//     {
-//         id: 5,
-//         name: "Street Style Elite",
-//         price: 169,
-//         category: "casual",
-//         image: "https://images.unsplash.com/photo-1759542890353-35f5568c1c90?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjYXN1YWwlMjBzbmVha2VycyUyMHN0eWxlfGVufDF8fHx8MTc2OTE0OTQ1MHww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
-//     },
-//     {
-//         id: 6,
-//         name: "Performance Max",
-//         price: 199,
-//         category: "sports",
-//         image: "https://images.unsplash.com/photo-1695459468644-717c8ae17eed?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzcG9ydCUyMHNob2VzJTIwZGVzaWdufGVufDF8fHx8MTc2OTI1NTI5Nnww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
-//     },
-//     {
-//         id: 7,
-//         name: "Marathon Elite",
-//         price: 209,
-//         category: "running",
-//         image: "https://images.unsplash.com/photo-1661605813204-8c7662c1a5f8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxibGFjayUyMHJ1bm5pbmclMjBzaG9lc3xlbnwxfHx8fDE3NjkyNTUyOTR8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
-//     },
-//     {
-//         id: 8,
-//         name: "Heritage Classic",
-//         price: 159,
-//         category: "casual",
-//         image: "https://images.unsplash.com/photo-1573875133340-0b589f59a8c4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3aGl0ZSUyMHNuZWFrZXJzJTIwbWluaW1hbHxlbnwxfHx8fDE3NjkxNjk5NzF8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
-//     }
-// ];

@@ -87,7 +87,7 @@ model Product {
   id          String   @id @default(cuid())
   name        String
   description String
-  quantity    Int?
+  quantity    Int
   price       Float
   oldPrice    Float    @map("old_price")
   category    Category

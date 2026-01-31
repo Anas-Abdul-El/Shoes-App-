@@ -4,37 +4,53 @@ import Link from "next/link"
 import { ShoppingBag } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { useAnimation } from "@/hooks/useAnimation";
+import { Session } from "next-auth";
+import { User } from "lucide-react";
 
 type link = {
     id: number
     href: string
-    content: string
+    content: string | null | undefined
 }
 
-const Links: Array<link> = [
-    {
+
+
+function Nav({
+    user,
+}: {
+    user: Session | null
+}) {
+
+    const name = user?.user?.name
+    const login = user ? ({
+        id: 0,
+        href: "/setting",
+        content: ""
+    }) : ({
         id: 0,
         href: "/login",
         content: "login"
-    },
-    {
-        id: 1,
-        href: "/collections",
-        content: "collections"
-    },
-    {
-        id: 2,
-        href: "/about",
-        content: "about"
-    },
-    {
-        id: 3,
-        href: "/contact",
-        content: "contact us"
-    },
-]
+    })
 
-function Nav() {
+    const Links: Array<link> = [
+        login,
+        {
+            id: 1,
+            href: "/collections",
+            content: "collections"
+        },
+        {
+            id: 2,
+            href: "/about",
+            content: "about"
+        },
+        {
+            id: 3,
+            href: "/contact",
+            content: "contact us"
+        },
+    ]
+
     const path = usePathname()
     const navVisible = useAnimation(0)
 
@@ -48,10 +64,20 @@ function Nav() {
                     Links.map((ele, index) => {
                         return <li
                             key={ele.id}
-                            className={`hover:text-gray-300 md:block hidden transition-all duration-500 ${index === 0 ? 'animation-delay-100' : index === 1 ? 'animation-delay-200' : index === 2 ? 'animation-delay-300' : 'animation-delay-400'} ${navVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-4'}`}
+                            className={`hover:text-gray-300 md:block hidden transition-all duration-500 
+                                ${index === 0 ? 'animation-delay-100' : index === 1 ? 'animation-delay-200' : index === 2 ? 'animation-delay-300' : 'animation-delay-400'} 
+                                ${navVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-4'}
+                                ${(user && index === 0) && "font-bold "} `}
                         >
-                            <Link href={ele.href} className={`${path == ele.href && "border-b-solid border-b"}`}>
-                                {ele.content}
+                            <Link href={ele.href} className={`${(path == ele.href && !(user && index === 0)) && "border-b-solid border-b"} flex items-center space-x-1`}>
+                                {
+                                    (user && index === 0) && (
+                                        <div className="border-2 border-solid rounded-full p-1">
+                                            <User size={20} />
+                                        </div>
+                                    )
+                                }
+                                <p>{ele.content}</p>
                             </Link>
                         </li>
                     })
