@@ -7,6 +7,7 @@ import { deleteFromCart } from '../../../server/delete-from-cart';
 import { useState, useTransition } from 'react';
 import { checkout } from '../../../server/checkout';
 import { useStaggeredAnimation } from '@/hooks/useAnimation';
+import PayementAlert from './Payement-alert';
 
 
 function CartWr({
@@ -29,6 +30,7 @@ function CartWr({
     }
 
     const [isPending, startTransition] = useTransition();
+    const [submit, setSubmit] = useState(false)
 
     const handleDelete = (productId: string) => {
         startTransition(() => {
@@ -41,13 +43,14 @@ function CartWr({
         startTransition(() => {
             checkout()
                 .then((res) => setMessage(res))
+                .then((() => setSubmit(true)))
         })
     }
 
     return (
         <>
+            {submit && <PayementAlert />}
             <div className='bg-zinc-900 w-9/10 md:h-9/13 h-10/12 rounded-xl flex flex-col justify-start items-center p-4 box-border overflow-auto animate-slide-up'>
-                <p>{message}</p>
                 {
                     products.map((product, index) => {
                         return (

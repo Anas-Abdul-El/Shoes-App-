@@ -1,9 +1,14 @@
+import { Session } from 'next-auth'
 import React from 'react'
 
-function adminSetting() {
+function AdminSetting({
+    user,
+}: {
+    user: Session | null
+}) {
     return (
         <div>adminSetting</div>
     )
 }
 
-export default adminSetting
+export default AdminSetting

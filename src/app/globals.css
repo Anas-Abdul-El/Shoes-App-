@@ -197,4 +197,29 @@
   .animation-delay-1000 {
     animation-delay: 1000ms;
   }
+
+  .animate {
+    top: -90px;
+    animation: slide-down 1s 0.1s forwards, slide-up 1s 3s forwards
+  }
+
+  @keyframes slide-down {
+    from {
+      top: -90px
+    }
+
+    to {
+      top: 15px
+    }
+  }
+
+  @keyframes slide-up {
+    from {
+      top: 15px
+    }
+
+    to {
+      top: -90px
+    }
+  }
 }

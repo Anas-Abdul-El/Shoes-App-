@@ -1,9 +1,13 @@
-import React from 'react'
+import { Session } from 'next-auth'
 
-function userSetting() {
+function UserSetting({
+    user,
+}: {
+    user: Session | null
+}) {
     return (
         <div>userSetting</div>
     )
 }
 
-export default userSetting
+export default UserSetting

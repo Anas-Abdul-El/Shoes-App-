@@ -1,4 +1,5 @@
 import CartWr from '@/components/cart/Cart-wr'
+import PayementAlert from '@/components/cart/Payement-alert';
 import { auth } from '@/lib/auth'
 import prisma from '@/lib/prisma'
 
