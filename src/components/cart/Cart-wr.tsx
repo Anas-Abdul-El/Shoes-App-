@@ -8,6 +8,7 @@ import { useState, useTransition } from 'react';
 import { checkout } from '../../../server/checkout';
 import { useStaggeredAnimation } from '@/hooks/useAnimation';
 import PayementAlert from './Payement-alert';
+import EmptyCart from './Empty-cart';
 
 
 function CartWr({
@@ -46,6 +47,8 @@ function CartWr({
                 .then((() => setSubmit(true)))
         })
     }
+
+    if (products.length === 0) return <EmptyCart />
 
     return (
         <>
