@@ -15,7 +15,9 @@ async function page() {
         <div className="h-screen w-screen bg-linear-to-br from-zinc-950 via-zinc-900 to-zinc-950">
             {
                 role === "user" ? (
-                    <UserSetting user={user} />
+                    <div className='w-full h-full flex justify-center items-center'>
+                        <UserSetting user={user} />
+                    </div>
                 ) : (
                     <AdminSetting user={user} />
                 )

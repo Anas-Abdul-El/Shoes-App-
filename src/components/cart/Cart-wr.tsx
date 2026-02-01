@@ -10,7 +10,6 @@ import { useStaggeredAnimation } from '@/hooks/useAnimation';
 import PayementAlert from './Payement-alert';
 import EmptyCart from './Empty-cart';
 
-
 function CartWr({
     products,
     id,

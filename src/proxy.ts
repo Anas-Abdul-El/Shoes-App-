@@ -10,10 +10,7 @@ import {
 async function middleware(req: NextRequest) {
     const path = req.nextUrl.pathname;
 
-    console.log(path);
-
     const isLogin = await auth()
-    const role = isLogin?.role
 
     const isAuthRoutes = authRoutes.includes(path)
     const isApiAuthRoute = (API_AURH_ROUTE === path)
