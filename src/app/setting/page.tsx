@@ -2,6 +2,9 @@
 import AdminSetting from '@/components/setting/Admin-setting'
 import UserSetting from '@/components/setting/User-setting'
 import { auth } from '@/lib/auth'
+import prisma from '@/lib/prisma'
+
+
 
 async function page() {
 
@@ -11,6 +14,8 @@ async function page() {
 
     const role = user.role.toLowerCase()
 
+    const products = await prisma.product.findMany()
+
     return (
         <div className="h-screen w-screen bg-linear-to-br from-zinc-950 via-zinc-900 to-zinc-950">
             {
@@ -19,7 +24,7 @@ async function page() {
                         <UserSetting user={user} />
                     </div>
                 ) : (
-                    <AdminSetting user={user} />
+                    <AdminSetting user={user} products={products} />
                 )
             }
         </div>

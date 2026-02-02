@@ -7,11 +7,29 @@ import ItemsAdmin from './Items-admin';
 import AddAdmin from './Add-admin';
 import LogAdmin from './Log-admin';
 
+type Category = "RUNNING" | "CASUAL" | "SPORTS" | "BOOTS";
+
+export type Product = {
+    id: string;
+    name: string;
+    description: string;
+    price: number;
+    oldPrice: number;
+    category: Category;
+    quantity: number | null;
+    imageUrl: string;
+}
+
+type Products = Product[]
+
 function AdminSetting({
     user,
+    products,
 }: {
     user: Session | null
+    products: Products
 }) {
+
 
     const params = useSearchParams()
 
@@ -23,7 +41,7 @@ function AdminSetting({
                 link === "general" ?
                     <GeneralAdmin user={user} />
                     : link === "items" ?
-                        <ItemsAdmin />
+                        <ItemsAdmin products={products} />
                         : link === "admin" ?
                             <AddAdmin />
                             : (link === "log" &&
