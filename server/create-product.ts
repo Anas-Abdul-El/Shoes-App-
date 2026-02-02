@@ -9,7 +9,6 @@ export const createProduct = async ({
     quantity,
     imageUrl,
     description,
-    oldPrice,
     category
 }: {
     name: string,
@@ -17,7 +16,6 @@ export const createProduct = async ({
     quantity: number,
     imageUrl: string,
     description: string
-    oldPrice: number
     category: Category
 }) => {
     try {
@@ -28,7 +26,7 @@ export const createProduct = async ({
                 quantity,
                 imageUrl,
                 description,
-                oldPrice,
+                oldPrice: 0,
                 category
             }
         })

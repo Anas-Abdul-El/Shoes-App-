@@ -28,3 +28,6 @@ export const unprotectedRoutes = ["/collections", "/about", "/contact", "/"]
  * session management, token validation, and provider callbacks.
  */
 export const API_AURH_ROUTE = "/api"
+
+
+export const adminRoutes = ["/setting/addItems", "/setting/editItems"]
