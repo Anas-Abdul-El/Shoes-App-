@@ -17,7 +17,7 @@ async function page() {
     const products = await prisma.product.findMany()
 
     return (
-        <div className="h-screen w-screen bg-linear-to-br from-zinc-950 via-zinc-900 to-zinc-950">
+        <div className="h-screen w-full bg-linear-to-br from-zinc-950 via-zinc-900 to-zinc-950">
             {
                 role !== "user" ? (
                     <div className='w-full h-full flex justify-center items-center'>

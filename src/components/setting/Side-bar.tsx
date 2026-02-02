@@ -12,9 +12,6 @@ function SideBar() {
 
     const link = [...params][0][1]
 
-    console.log(link);
-
-
     const links = [
         {
             id: 0,
@@ -46,7 +43,7 @@ function SideBar() {
 
     return (
         <>
-            <div className='absolute sm:top-6 top-15 left-6 cursor-pointer z-20' onClick={handleClick}>
+            <div className='fixed sm:top-6 top-15 left-6 cursor-pointer z-30' onClick={handleClick}>
                 <SlidersHorizontal />
             </div>
             <nav

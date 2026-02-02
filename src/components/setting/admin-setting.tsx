@@ -36,12 +36,14 @@ function AdminSetting({
     const link = [...params][0][1]
 
     return (
-        <div>
+        <div className='h-full'>
             {
                 link === "general" ?
                     <GeneralAdmin user={user} />
                     : link === "items" ?
-                        <ItemsAdmin products={products} />
+                        <div className='bg-black w-full h-full absolute'>
+                            <ItemsAdmin products={products} />
+                        </div>
                         : link === "admin" ?
                             <AddAdmin />
                             : (link === "log" &&
