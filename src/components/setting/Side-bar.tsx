@@ -46,7 +46,7 @@ function SideBar() {
 
     return (
         <>
-            <div className='absolute sm:top-6 top-15 left-6 cursor-pointer z-10' onClick={handleClick}>
+            <div className='absolute sm:top-6 top-15 left-6 cursor-pointer z-20' onClick={handleClick}>
                 <SlidersHorizontal />
             </div>
             <nav
