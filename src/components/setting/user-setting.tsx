@@ -5,6 +5,7 @@ import { useState, useTransition } from 'react'
 import { changeTheName } from '../../../server/change-the-name'
 import { changeThePassword } from '../../../server/change-the-password'
 import { Button } from '../ui/button'
+import { signOutFromAcc } from '../../../server/sign-out'
 
 function UserSetting({
     user,
@@ -69,13 +70,13 @@ function UserSetting({
                             value={oldPassValue}
                             className='w-full sm:w-1/2 dark'
                             placeholder='Write the old password'
-                            onChange={(e) => setOldPassValue(e.currentTarget.value)} />
+                            onChange={e => setOldPassValue(e.currentTarget.value)} />
                         <Input
                             type='password'
                             value={passValue}
-                            className='w-full dark'
+                            className='w-full sm:w-1/2 dark'
                             placeholder='Write the new password'
-                            onChange={(e) => setPassValue(e.currentTarget.value)} />
+                            onChange={e => setPassValue(e.currentTarget.value)} />
                         <Button
                             variant={"default"}
                             className='dark'
@@ -86,7 +87,7 @@ function UserSetting({
                 </div>
                 <div className='w-8/10 h-20 mx-auto flex items-center'>
                     <p
-                        onClick={() => { }}
+                        onClick={signOutFromAcc}
                         className='text-red-500 cursor-pointer'>Logout from your account</p>
                 </div>
             </div>

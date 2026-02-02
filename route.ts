@@ -4,7 +4,7 @@
  * unauthorized visitors to the login page. Includes user account management,
  * shopping cart, and personal settings.
  */
-export const protectedRoutes = ["/adress", "/cart", "setting"]
+export const protectedRoutes = ["/adress", "/cart", "/setting"]
 
 /**
  * Authentication Routes - Login and registration pages

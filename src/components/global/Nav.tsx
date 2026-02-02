@@ -24,7 +24,7 @@ function Nav({
     const name = user?.user?.name
     const login = user ? ({
         id: 0,
-        href: "/setting",
+        href: "/setting?link=general",
         content: ""
     }) : ({
         id: 0,
@@ -55,7 +55,7 @@ function Nav({
     const navVisible = useAnimation(0)
 
     return (
-        <nav className={`fixed top-0 left-0 right-0 z-50 flex justify-between items-center w-9/11 h-15 mx-auto transition-all duration-500 ${navVisible ? 'animate-slide-up opacity-100' : 'opacity-0 -translate-y-2'}`}>
+        <nav className={`fixed top-0 left-0 right-0 z-50 flex justify-between items-center  h-15 mx-auto transition-all w-9/11 duration-500 ${navVisible ? 'animate-slide-up opacity-100' : 'opacity-0 -translate-y-2'}`}>
             <Link href="/" className="uppercase font-bold text-2xl cursor-pointer hover:opacity-80 transition-opacity">
                 stride
             </Link>

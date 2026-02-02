@@ -1,5 +1,6 @@
 import { Session } from 'next-auth'
-import React from 'react'
+import SideBar from './Side-bar'
+import { SlidersHorizontal } from 'lucide-react'
 
 function AdminSetting({
     user,
@@ -7,7 +8,10 @@ function AdminSetting({
     user: Session | null
 }) {
     return (
-        <div>adminSetting</div>
+        <>
+            <SideBar />
+
+        </>
     )
 }
 
