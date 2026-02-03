@@ -31,7 +31,7 @@ import {
  * 
  * @returns {JSX.Element} Sign-in form component with name, email, and password fields
  */
-export function SignInForm() {
+export function SignInForm({ role = "USER" }: { role?: "USER" | "ADMIN" }) {
   /** React Hook Form instance with Zod validation */
   const form = useForm<FormSchemaType>({
     resolver: zodResolver(formSchema),
@@ -63,7 +63,9 @@ export function SignInForm() {
       <CardHeader>
         <CardTitle>Sign In</CardTitle>
         <CardDescription>
-          Enter your name, email and password to sign in to your account.
+          {
+            role === "ADMIN" ? "Admin sign-up portal" : "Create a new account"
+          }
         </CardDescription>
       </CardHeader>
       <CardContent>
@@ -133,13 +135,16 @@ export function SignInForm() {
             </Button>
           </form>
         </Form>
-        <CardFooter>
-          <div className=" my-5 text-sm text-center">
-            <Link href="/login" className="hover:underline">
-              Already have an account?
-            </Link>
-          </div>
-        </CardFooter>
+        {
+          role !== "ADMIN" &&
+          <CardFooter>
+            <div className=" my-5 text-sm text-center">
+              <Link href="/login" className="hover:underline">
+                Already have an account?
+              </Link>
+            </div>
+          </CardFooter>
+        }
       </CardContent>
     </Card >
   )

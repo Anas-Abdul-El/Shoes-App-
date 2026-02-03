@@ -44,10 +44,14 @@ function AdminSetting({
                         <div className='bg-black w-full h-full absolute'>
                             <ItemsAdmin products={products} />
                         </div>
-                        : link === "admin" ?
-                            <AddAdmin />
+                        : link === "admins" ?
+                            <div className=' flex justify-center items-center w-screen h-screen absolute'>
+                                <AddAdmin />
+                            </div>
                             : (link === "log" &&
-                                <LogAdmin />
+                                <div className=' flex justify-center items-center w-screen h-screen absolute'>
+                                    <LogAdmin />
+                                </div>
                             )
             }
 

@@ -5,7 +5,7 @@ import { formSchema, type FormSchemaType } from "../schemas/form-schema";
 import bcrypt from "bcrypt"
 import { redirect } from "next/navigation";
 
-export async function signInAction(data: FormSchemaType) {
+export async function signInAction(data: FormSchemaType & { role?: "USER" | "ADMIN" }) {
     const velidateData = formSchema.safeParse(data);
 
     if (!velidateData.success) return { error: "validation field" }
@@ -25,6 +25,7 @@ export async function signInAction(data: FormSchemaType) {
             data: {
                 email,
                 name,
+                role: data.role || "USER",
                 password: hashPassword,
             }
         })

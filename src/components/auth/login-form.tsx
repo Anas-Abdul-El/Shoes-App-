@@ -25,6 +25,7 @@ import {
   FormMessage,
 } from "@/components/ui/form"
 
+
 /**
  * Login form component.
  * Provides a form for users to log in with email and password.
@@ -63,7 +64,9 @@ export function LoginForm() {
       <CardHeader>
         <CardTitle>Login</CardTitle>
         <CardDescription>
-          Enter your email and password to login to your account.
+
+          "Please enter your credentials to log in."
+
         </CardDescription>
       </CardHeader>
       <CardContent>
