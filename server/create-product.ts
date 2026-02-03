@@ -1,4 +1,6 @@
+"use server"
 import prisma from "@/lib/prisma"
+import { redirect } from "next/navigation"
 
 type Category = "RUNNING" | "CASUAL" | "SPORTS" | "BOOTS"
 
@@ -30,6 +32,7 @@ export const createProduct = async ({
                 category
             }
         })
+        redirect("/setting?link=items")
         return { message: "the item created succ", type: "done" }
     } catch {
         return { message: "unexpected error occur", type: "error" }

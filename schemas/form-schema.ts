@@ -64,6 +64,38 @@ export const addressSchema = z.object({
     }),
 })
 
+/**
+ * Zod schema for add items (product) form validation.
+ * Validates product name, description, price, quantity, category, and image.
+ */
+export const addItemSchema = z.object({
+    /** Product name - must be at least 1 character */
+    name: z.string().min(1, {
+        message: "Please enter a product name.",
+    }),
+    /** Product description - must be at least 1 character */
+    description: z.string().min(1, {
+        message: "Please enter a description.",
+    }),
+    /** Product price - must be a positive number */
+    price: z.string().min(1, {
+        message: "Please enter a price.",
+    }),
+    /** Product quantity - must be a positive integer */
+    quantity: z.string().min(1, {
+        message: "Quantity must be at least 1.",
+    }),
+    /** Product category - must be one of the allowed types */
+    category: z.enum(["RUNNING", "CASUAL", "SPORTS", "BOOTS"], {
+        message: "Please select a valid category.",
+    }),
+    /** Product image file */
+    imageUrl: z.string().min(1, {
+        message: "Please upload an image.",
+    }),
+})
+
+
 
 /**
  * TypeScript type inferred from formSchema.
@@ -82,3 +114,9 @@ export type LoginSchemaType = z.infer<typeof loginSchema>
  * Represents the shape of data for address forms.
  */
 export type AddressSchemaType = z.infer<typeof addressSchema>
+
+/**
+ * TypeScript type inferred from addItemSchema.
+ * Represents the shape of data for add item forms.
+ */
+export type AddItemSchemaType = z.infer<typeof addItemSchema>
