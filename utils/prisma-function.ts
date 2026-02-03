@@ -1,3 +1,4 @@
+"use server";
 import prisma from "@/lib/prisma"
 
 // function to find product by its id
@@ -36,3 +37,4 @@ export const getUserbyEmail = async (email: string) => {
 
     return user;
 }
+

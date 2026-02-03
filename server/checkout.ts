@@ -3,6 +3,7 @@ import { auth } from "@/lib/auth"
 import prisma from "@/lib/prisma"
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation"
+import { log } from "./Log";
 
 /**
  * Checkout function that processes the purchase by:
@@ -91,6 +92,7 @@ export const checkout = async () => {
                 })
             }
 
+            log({ type: "PURCHASE", action: `User ${userId} completed a purchase.`, orderId: order.id, details: { totalPrice, quantity: cart.length } })
         })
 
         revalidatePath("/cart")

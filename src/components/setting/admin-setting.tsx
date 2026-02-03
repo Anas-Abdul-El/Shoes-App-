@@ -6,6 +6,7 @@ import GeneralAdmin from './General-admin'
 import ItemsAdmin from './Items-admin';
 import AddAdmin from './Add-admin';
 import LogAdmin from './Log-admin';
+import { GetActivityLog } from './Log-admin';
 
 type Category = "RUNNING" | "CASUAL" | "SPORTS" | "BOOTS";
 
@@ -25,9 +26,11 @@ type Products = Product[]
 function AdminSetting({
     user,
     products,
+    activityLogs
 }: {
     user: Session | null
     products: Products
+    activityLogs: GetActivityLog
 }) {
 
 
@@ -50,7 +53,7 @@ function AdminSetting({
                             </div>
                             : (link === "log" &&
                                 <div className=' flex justify-center items-center w-screen h-screen absolute'>
-                                    <LogAdmin />
+                                    <LogAdmin activityLogs={activityLogs} />
                                 </div>
                             )
             }

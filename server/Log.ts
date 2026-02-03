@@ -1,3 +1,4 @@
+"use server";
 import prisma from "@/lib/prisma"
 import { auth } from "@/lib/auth"
 
@@ -8,7 +9,7 @@ type ActivityType =
     | "REVIEW"
     | "UPDATE_PROFILE"
 
-const log = async ({
+export const log = async ({
     type,
     action,
     details,
@@ -22,17 +23,19 @@ const log = async ({
 
     try {
         const user = await auth()
-        if (!user || !user.user?.id) {
+        if (!user || !user.id) {
             throw new Error("User is not authenticated")
         }
+
+        const userId = user.id
 
         await prisma.activityLog.create({
             data: {
                 type,
-                userId: user?.user?.id,
+                userId,
                 action,
                 details,
-                orderId
+                orderId,
             }
         })
     } catch (error) {

@@ -1,3 +1,4 @@
+"use server"
 import prisma from "@/lib/prisma"
 
 type Category = "RUNNING" | "CASUAL" | "SPORTS" | "BOOTS"

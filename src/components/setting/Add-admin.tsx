@@ -1,4 +1,3 @@
-import React from 'react'
 import { SignInForm } from '../auth/sign-in-form'
 
 function AddAdmin() {

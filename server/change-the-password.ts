@@ -2,6 +2,7 @@
 import { auth } from "@/lib/auth"
 import prisma from "@/lib/prisma"
 import bcrypt from "bcrypt"
+import { log } from "./Log"
 
 export const changeThePassword = async (password: { oldPass: string, newPass: string }) => {
 
@@ -37,6 +38,8 @@ export const changeThePassword = async (password: { oldPass: string, newPass: st
                 password: newPass,
             }
         })
+
+        await log({ type: "UPDATE_PROFILE", action: "Changed user password" })
         return { message: "the password change succ", type: "done" }
     } catch {
         return { message: "something went wrong", type: "error" }

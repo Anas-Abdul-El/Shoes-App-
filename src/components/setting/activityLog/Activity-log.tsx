@@ -1,3 +1,4 @@
+import { getActivityLog } from '../../../../utils/prisma-function';
 import {
     Table,
     TableBody,
@@ -10,15 +11,15 @@ import {
 import { ActivityType, Role } from '@/app/generated/prisma/enums';
 import { JsonValue } from '@prisma/client/runtime/client';
 
-export type GetActivityLog = ({
+type GetActivityLog = () => Promise<({
     user: {
-        image: string | null;
         id: string;
         name: string | null;
         email: string | null;
         password: string | null;
         role: Role;
         emailVerified: Date | null;
+        image: string | null;
     };
     order: ({
         orderItems: {
@@ -35,44 +36,65 @@ export type GetActivityLog = ({
         totalPrice: number;
     }) | null;
 } & {
-    details: JsonValue | null;
     id: string;
     type: ActivityType;
     userId: string;
     action: string;
+    details: JsonValue | null;
     createdAt: Date;
     orderId: string | null;
-})[]
+})[] | undefined>
 
 
-export default function LogAdmin({ activityLogs }: { activityLogs: GetActivityLog }) {
+function ActivityLog() {
     return (
-        activityLogs && activityLogs.length > 0 ? (
-            <Table className="dark w-8/10 mx-auto">
+        getActivityLog().then((activityLogs) => (
+            <Table>
                 <TableCaption>Activity Logs</TableCaption>
                 <TableHeader>
                     <TableRow>
-                        <TableHead className="w-25">Type</TableHead>
+                        <TableHead>Type</TableHead>
                         <TableHead>User Name</TableHead>
                         <TableHead>Action</TableHead>
                         <TableHead>Description</TableHead>
                         <TableHead>Timestamp</TableHead>
-                        <TableHead>Order Id</TableHead>
+                        <TableHead>Items Orderd</TableHead>
                     </TableRow>
                 </TableHeader>
                 <TableBody>
-                    {activityLogs.map((log) => (
+                    {activityLogs.length !== 0 && activityLogs.map((log) => (
                         <TableRow key={log.id}>
                             <TableCell>{log.type}</TableCell>
                             <TableCell>{log.user?.name}</TableCell>
                             <TableCell>{log.action}</TableCell>
-                            <TableCell>{JSON.stringify(log.details).replaceAll('"', '').replaceAll('{', '').replaceAll('}', '').replaceAll(',', ', ')}</TableCell>
+                            <TableCell>{log.details?.toString()}</TableCell>
                             <TableCell>{`${log.createdAt}`}</TableCell>
                             <TableCell>{log.orderId}</TableCell>
                         </TableRow>
                     ))}
                 </TableBody>
-            </Table>) : <div>No activity logs available</div>
-
+            </Table>
+        ))
     )
 }
+
+export default ActivityLog
+// <Table>
+//     <TableCaption>A list of your recent invoices.</TableCaption>
+//     <TableHeader>
+//         <TableRow>
+//             <TableHead className="w-25">Invoice</TableHead>
+//             <TableHead>Status</TableHead>
+//             <TableHead>Method</TableHead>
+//             <TableHead className="text-right">Amount</TableHead>
+//         </TableRow>
+//     </TableHeader>
+//     <TableBody>
+//         <TableRow>
+//             <TableCell className="font-medium">INV001</TableCell>
+//             <TableCell>Paid</TableCell>
+//             <TableCell>Credit Card</TableCell>
+//             <TableCell className="text-right">$250.00</TableCell>
+//         </TableRow>
+//     </TableBody>
+// </Table>

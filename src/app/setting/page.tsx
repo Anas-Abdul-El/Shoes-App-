@@ -16,6 +16,17 @@ async function page() {
 
     const products = await prisma.product.findMany()
 
+    const activityLogs = await prisma.activityLog.findMany({
+        include: {
+            user: true,
+            order: {
+                include: {
+                    orderItems: true
+                }
+            }
+        },
+    })
+
     return (
         <div className="h-screen w-full bg-linear-to-br from-zinc-950 via-zinc-900 to-zinc-950">
             {
@@ -24,7 +35,7 @@ async function page() {
                         <UserSetting user={user} />
                     </div>
                 ) : (
-                    <AdminSetting user={user} products={products} />
+                    <AdminSetting user={user} products={products} activityLogs={activityLogs} />
                 )
             }
         </div>

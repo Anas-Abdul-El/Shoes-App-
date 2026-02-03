@@ -4,6 +4,7 @@ import { PrismaAdapter } from "@auth/prisma-adapter"
 import Credentials from "next-auth/providers/credentials"
 import { loginSchema } from "@/../schemas/form-schema"
 import bcrypt from "bcrypt"
+import { log } from "../../server/Log"
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
     secret: process.env.AUTH_SECRET,
@@ -61,6 +62,15 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
                 token.role = acc.role as string
             }
             return token
+        },
+        signIn: async ({ user }) => {
+            const acc = await prisma.user.findUnique({
+                where: { id: user.id }
+            })
+            if (acc) {
+                log({ type: "LOGIN", action: `User ${user.name} logged in.` })
+            }
+            return true
         },
     },
     adapter: PrismaAdapter(prisma),

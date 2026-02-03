@@ -2,10 +2,12 @@
 
 import Image from "next/image";
 import { redirect } from "next/navigation";
-import { useState } from "react";
+import { useState, useTransition } from "react";
 import { Button } from "../ui/button";
 import { Info } from "lucide-react";
 import { useStaggeredAnimation } from "@/hooks/useAnimation";
+import { log } from "../../../server/Log";
+import { start } from "repl";
 
 type Filter = {
     id: number
@@ -64,6 +66,7 @@ function CollectionsContect({ products }: { products: Products }) {
         : AviableProducts.filter(ele => ele.category.toLowerCase() === filterName.toLowerCase())
 
     const itemsVisible = useStaggeredAnimation(fliteringProduct.length, 300, 100);
+    const [isPending, startTransition] = useTransition();
 
     const handleFiltersClick = (ele: Filter) => {
         setFilterName(ele.type)
@@ -71,6 +74,9 @@ function CollectionsContect({ products }: { products: Products }) {
     }
 
     const handleProductClick = (id: string) => {
+        startTransition(() => {
+            log({ type: "REVIEW", action: `Product ${id} viewed.` })
+        })
         redirect(`/collections/${id}`)
     }
     return (

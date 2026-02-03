@@ -1,6 +1,7 @@
 "use server"
 import { auth } from "@/lib/auth"
 import prisma from "@/lib/prisma"
+import { log } from "./Log"
 
 export const changeTheName = async (name: string) => {
 
@@ -19,6 +20,8 @@ export const changeTheName = async (name: string) => {
                 name,
             }
         })
+
+        await log({ type: "UPDATE_PROFILE", action: "Changed user name", details: { previousName: user.user.name, newName: name } })
         return { message: "the name change succ", type: "done" }
     } catch {
         return { message: "something went wrong", type: "error" }
