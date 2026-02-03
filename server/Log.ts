@@ -1,0 +1,41 @@
+import prisma from "@/lib/prisma"
+import { auth } from "@/lib/auth"
+
+type ActivityType =
+    | "LOGIN"
+    | "LOGOUT"
+    | "PURCHASE"
+    | "REVIEW"
+    | "UPDATE_PROFILE"
+
+const log = async ({
+    type,
+    action,
+    details,
+    orderId
+}: {
+    type: ActivityType
+    action: string
+    details?: object
+    orderId?: string
+}) => {
+
+    try {
+        const user = await auth()
+        if (!user || !user.user?.id) {
+            throw new Error("User is not authenticated")
+        }
+
+        await prisma.activityLog.create({
+            data: {
+                type,
+                userId: user?.user?.id,
+                action,
+                details,
+                orderId
+            }
+        })
+    } catch (error) {
+        console.error("Error logging activity:", error)
+    }
+}
