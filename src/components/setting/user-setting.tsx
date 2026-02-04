@@ -23,6 +23,7 @@ function UserSetting({
     const [passMessage, setPassMessage] = useState({ message: "", type: "" })
     const [nameMessage, setNameMessage] = useState({ message: "", type: "" })
 
+    // Local transition state for server actions
     const [isPendding, setTransitive] = useTransition()
 
     const handleNameChange = () => {

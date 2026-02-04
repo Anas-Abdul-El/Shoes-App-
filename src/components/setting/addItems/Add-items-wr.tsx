@@ -12,6 +12,8 @@ import { useTransition } from 'react'
 import { set } from 'zod'
 
 function AddItemsWr() {
+    // Component for adding a new product. Handles image preview locally
+    // and submits a server action `createProduct` with validated values.
     const [preview, setPreview] = useState<string | null>(null)
     const [isPending, startTransition] = useTransition()
 

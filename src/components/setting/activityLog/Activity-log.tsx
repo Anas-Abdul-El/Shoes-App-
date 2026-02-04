@@ -47,6 +47,9 @@ type GetActivityLog = () => Promise<({
 
 
 function ActivityLog() {
+    // Server-driven table that fetches activity logs and renders them.
+    // Uses `getActivityLog()` helper to retrieve recent activities and
+    // formats each row with type, user, action, details and timestamp.
     return (
         getActivityLog().then((activityLogs) => (
             <Table>

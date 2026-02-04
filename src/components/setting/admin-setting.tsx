@@ -34,8 +34,10 @@ function AdminSetting({
 }) {
 
 
+    // Determine which admin subsection to render from the `link` query param
     const params = useSearchParams()
 
+    // Note: assumes `link` is present as the first search param (e.g. ?link=general)
     const link = [...params][0][1]
 
     return (

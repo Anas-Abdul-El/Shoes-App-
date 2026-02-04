@@ -27,6 +27,9 @@ function EditItemsWr({
 }: {
     product: Product
 }) {
+    // Edit form wrapper for updating an existing product.
+    // Prefills fields from the provided `product` prop and calls the
+    // `editItem` server action on submit.
     const [isPending, startTransition] = useTransition()
     const [message, setMessage] = useState<string | null>(null)
 

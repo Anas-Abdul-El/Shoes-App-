@@ -13,6 +13,8 @@ type Products = Product[];
 
 function ItemsAdmin({ products }: { products: Products }) {
 
+    // Renders the list of products in admin view and provides actions
+    // to add, edit or delete products. Uses server action `deleteFromProduct`.
     const [isPending, setTransition] = useTransition()
     const [msg, setMsg] = useState("")
 
