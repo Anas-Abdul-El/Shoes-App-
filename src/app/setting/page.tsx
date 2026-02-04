@@ -7,7 +7,9 @@ import prisma from '@/lib/prisma'
 
 
 async function page() {
-
+    // Settings page: determines whether the current user is a regular
+    // user or an admin, loads necessary data (products and activity
+    // logs) and renders either the `UserSetting` or `AdminSetting` UI.
     const user = await auth()
 
     if (!user || !user.role) return null

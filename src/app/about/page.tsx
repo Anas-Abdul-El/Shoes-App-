@@ -5,6 +5,8 @@ import Image from 'next/image'
 import { useAnimation, useStaggeredAnimation } from '@/hooks/useAnimation'
 
 function AboutPage() {
+    // About page: presentational page with several sections that use
+    // animation hooks for entrance effects. No server data is required.
     const titleVisible = useAnimation(0)
     const descriptionVisible = useAnimation(200)
     const storyVisible = useAnimation(400)

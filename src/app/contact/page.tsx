@@ -21,6 +21,9 @@ const contactFormSchema = z.object({
 type ContactFormValues = z.infer<typeof contactFormSchema>
 
 function ContactPage() {
+    // Contact page: local contact form and contact cards. The form
+    // uses a client-side Zod-validated schema and local state for
+    // submission feedback — no server action wired here yet.
     const [submitted, setSubmitted] = useState(false)
 
     const titleVisible = useAnimation(0)

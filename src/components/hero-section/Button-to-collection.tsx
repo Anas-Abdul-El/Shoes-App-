@@ -4,6 +4,9 @@ import { Button } from "../ui/button"
 import { ArrowRight } from "lucide-react"
 
 function ButtonToCollection() {
+    // Simple CTA button that redirects to the collections page.
+    // Kept as a separate component for reusability and to keep the
+    // Hero section markup focused.
     return (
         <>
             <div>

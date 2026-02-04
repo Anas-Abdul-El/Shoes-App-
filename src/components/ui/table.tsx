@@ -5,6 +5,9 @@ import * as React from "react"
 import { cn } from "@/lib/utils"
 
 function Table({ className, ...props }: React.ComponentProps<"table">) {
+  // Table primitives: a small set of presentational wrappers around
+  // semantic HTML table elements. They apply consistent Tailwind styles
+  // and expose `data-slot` attributes so callers can target parts.
   return (
     <div
       data-slot="table-container"

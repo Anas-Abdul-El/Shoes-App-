@@ -5,6 +5,8 @@ import ButtonToCollection from "./Button-to-collection";
 
 
 function HeroSection() {
+    // Hero section with staggered entrance animations for title,
+    // description and call-to-action button using `useAnimation`.
     const titleVisible = useAnimation(0)
     const descriptionVisible = useAnimation(200)
     const buttonVisible = useAnimation(400)

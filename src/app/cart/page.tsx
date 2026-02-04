@@ -1,10 +1,10 @@
 import CartWr from '@/components/cart/Cart-wr'
-import PayementAlert from '@/components/cart/Payement-alert';
 import { auth } from '@/lib/auth'
 import prisma from '@/lib/prisma'
 
 async function Page() {
-
+    // Cart page: server component that loads the authenticated user's
+    // cart items and passes them to the client `CartWr` component.
     const user = await auth();
 
     const id = user?.id

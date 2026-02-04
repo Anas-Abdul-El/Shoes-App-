@@ -29,7 +29,8 @@ import {
 
 
 export default function AddressWr() {
-
+    // Address form used to collect user's delivery address. On submit
+    // it calls server action `addAdress` which persists the address.
     const form = useForm<AddressSchemaType>({
         resolver: zodResolver(addressSchema),
         defaultValues: {

@@ -18,6 +18,9 @@ function ItemsWr({
     product: Product | null,
 }) {
 
+    // Item detail view component (client): shows product details and
+    // allows adding to cart. Uses a server action `addToCart` through
+    // `useActionState` to submit the quantity and productId.
     const router = useRouter();
     const intialsState: Errors = {
         errors: { message: "" },

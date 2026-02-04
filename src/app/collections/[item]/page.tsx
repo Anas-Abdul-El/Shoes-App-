@@ -6,7 +6,9 @@ async function page({
 }: {
     params: { item: string }
 }) {
-
+    // Dynamic collection item page. Loads a single product by id via
+    // `findProductsById` (Prisma helper) and renders the client
+    // `ItemsWr` detail component. Returns `null` if no id is provided.
     const { item } = await params;
 
     if (!item) return null;
