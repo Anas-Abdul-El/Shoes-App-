@@ -36,11 +36,11 @@ async function middleware(req: NextRequest) {
         return NextResponse.redirect(new URL("/login", "http://localhost:3000"))
     }
 
-    // if (isAdminRoutes && role === "USER") {
-    //     return NextResponse.redirect(new URL("/", "http://localhost:3000"))
-    // } else if (isAdminRoutes && role === "ADMIN") {
-    //     return NextResponse.next()
-    // }
+    if (isAdminRoutes && role === "USER") {
+        return NextResponse.redirect(new URL("/", "http://localhost:3000"))
+    } else if (isAdminRoutes && role === "ADMIN") {
+        return NextResponse.next()
+    }
 }
 
 export const config = {
