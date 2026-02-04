@@ -9,7 +9,7 @@ function PayementAlert() {
             <CheckCircle2Icon />
             <AlertTitle>Checkout successful</AlertTitle>
             <AlertDescription>
-                Your payment of $29.99 has been processed. A receipt has been sent to
+                Thank you! for your purchase. A receipt has been sent to
                 your email address.
             </AlertDescription>
         </Alert>
