@@ -5,8 +5,8 @@ import { useSearchParams } from 'next/navigation'
 import GeneralAdmin from './General-admin'
 import ItemsAdmin from './Items-admin';
 import AddAdmin from './Add-admin';
-import LogAdmin from './Log-admin';
-import { GetActivityLog } from './Log-admin';
+import LogAdmin from './activityLog/Log-admin';
+import { GetActivityLog } from './activityLog/Log-admin';
 
 type Category = "RUNNING" | "CASUAL" | "SPORTS" | "BOOTS";
 
