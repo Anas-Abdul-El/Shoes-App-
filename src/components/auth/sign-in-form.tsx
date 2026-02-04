@@ -80,7 +80,7 @@ export function SignInForm({ role = "USER" }: { role?: "USER" | "ADMIN" }) {
                   <FormControl>
                     <Input
                       type="text"
-                      placeholder="anas"
+                      placeholder="ex: John Doe"
                       {...field}
                     />
                   </FormControl>
