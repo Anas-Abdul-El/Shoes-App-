@@ -4,12 +4,19 @@
   "private": true,
   "pnpm": {
     "onlyBuiltDependencies": [
-      "bcrypt"
+      "@prisma/engines",
+      "bcrypt",
+      "prisma"
+    ],
+    "ignoredBuiltDependencies": [
+      "esbuild",
+      "sharp",
+      "unrs-resolver"
     ]
   },
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "pnpm prisma generate && next build",
     "start": "next start",
     "lint": "eslint"
   },
