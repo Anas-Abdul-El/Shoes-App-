@@ -23,6 +23,22 @@ export const addToCart = async (
             };
         }
 
+        const product = await prisma.product.findUnique({
+            where: { id: productId }
+        });
+
+        if (!product) {
+            return {
+                errors: { message: "Product not found." }
+            };
+        }
+
+        if (product?.quantity === 0 || product?.quantity < quantity) {
+            return {
+                errors: { message: "Insufficient quantity available." }
+            };
+        }
+
         await prisma.cartItem.create({
             data: {
                 userId: user.id,

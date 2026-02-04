@@ -27,17 +27,17 @@ async function middleware(req: NextRequest) {
     if (isAuthRoutes && !isLogin) {
         return NextResponse.next()
     } else if (isAuthRoutes && isLogin) {
-        return NextResponse.redirect(new URL("/", "http://localhost:3000"))
+        return NextResponse.redirect(new URL("/", "https://shoes-app-amber.vercel.app/"))
     }
 
     if (isProtectedRoutes && isLogin) {
         return NextResponse.next()
     } else if (isProtectedRoutes && !isLogin) {
-        return NextResponse.redirect(new URL("/login", "http://localhost:3000"))
+        return NextResponse.redirect(new URL("/login", "https://shoes-app-amber.vercel.app/"))
     }
 
     if (isAdminRoutes && role === "USER") {
-        return NextResponse.redirect(new URL("/", "http://localhost:3000"))
+        return NextResponse.redirect(new URL("/", "https://shoes-app-amber.vercel.app/"))
     } else if (isAdminRoutes && role === "ADMIN") {
         return NextResponse.next()
     }
