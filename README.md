@@ -100,17 +100,4 @@ See `package.json` scripts for available linters and test commands. If none exis
 - If the dev server fails to start, check `DATABASE_URL` and run Prisma migrations.
 - Inspect server logs printed to the terminal for runtime errors.
 
-**Next Steps / Suggestions**
-- Add automated tests for critical flows (auth, cart, checkout)
-- Add seeding scripts for sample products and users
-- Add CI pipeline to run linting, tests and migration checks
 
-**License**
-Specify a license in `package.json` or add a `LICENSE` file.
-
----
-
-If you want, I can also:
-- Add a seed script and instructions
-- Add example `.env.example` with required keys
-- Commit the README and run `pnpm dev` to verify startup
