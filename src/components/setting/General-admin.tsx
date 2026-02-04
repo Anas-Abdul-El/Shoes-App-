@@ -12,11 +12,7 @@ function GeneralAdmin({
 }: {
     user: Session | null
 }) {
-
-    if (!user || !user.user?.name) return null;
-
-    const [nameValue, setNameValue] = useState<string>(user?.user?.name)
-
+    const [nameValue, setNameValue] = useState<string>("")
     const [oldPassValue, setOldPassValue] = useState<string>("")
     const [passValue, setPassValue] = useState<string>("")
 
@@ -24,6 +20,11 @@ function GeneralAdmin({
     const [nameMessage, setNameMessage] = useState({ message: "", type: "" })
 
     const [isPendding, setTransitive] = useTransition()
+
+    if (!user || !user.user?.name) return null;
+
+    if (nameValue === "") setNameValue(user?.user?.name)
+
 
     const handleNameChange = () => {
         setTransitive(() => {

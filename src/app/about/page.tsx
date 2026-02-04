@@ -24,7 +24,7 @@ function AboutPage() {
                             Crafting <span className="text-transparent bg-clip-text bg-gradient-to-r from-zinc-300 to-zinc-100">Exceptional</span> Footwear
                         </h1>
                         <p className={`text-lg sm:text-xl text-zinc-400 max-w-3xl mx-auto leading-relaxed transition-all duration-500 ${descriptionVisible ? 'animate-slide-up opacity-100' : 'opacity-0 translate-y-4'}`}>
-                            We believe that great shoes are more than just fashion—they're a statement of who you are. For over a decade, we've been at the intersection of innovation, craftsmanship, and style.
+                            We believe that great shoes are more than just fashion&mdash;they&rsquo;re a statement of who you are. For over a decade, we&rsquo;ve been at the intersection of innovation, craftsmanship, and style.
                         </p>
                     </div>
                 </div>
@@ -39,10 +39,10 @@ function AboutPage() {
                                 Our Story
                             </h2>
                             <p className="text-zinc-300 text-lg mb-4 leading-relaxed">
-                                What started as a small garage project has evolved into a global movement. Our founders believed that everyone deserves footwear that doesn't compromise on comfort or style. They spent years perfecting every detail—from material selection to sole engineering.
+                                What started as a small garage project has evolved into a global movement. Our founders believed that everyone deserves footwear that doesn&rsquo;t compromise on comfort or style. They spent years perfecting every detail&mdash;from material selection to sole engineering.
                             </p>
                             <p className="text-zinc-300 text-lg leading-relaxed">
-                                Today, we're trusted by millions who demand more from their shoes. We've stayed true to our roots: quality without compromise, innovation without gimmicks, and style that speaks for itself.
+                                Today, we&rsquo;re trusted by millions who demand more from their shoes. We&rsquo;ve stayed true to our roots: quality without compromise, innovation without gimmicks, and style that speaks for itself.
                             </p>
                         </div>
                         <div className={`relative h-96 bg-gradient-to-br from-zinc-800 to-zinc-900 rounded-2xl border border-zinc-700 overflow-hidden transition-all duration-500 ${imageVisible ? 'animate-scale-in opacity-100' : 'opacity-0 scale-95'}`}>
@@ -92,7 +92,7 @@ function AboutPage() {
                                 <h3 className="text-xl font-semibold text-white">Sustainability</h3>
                             </div>
                             <p className="text-zinc-400 leading-relaxed">
-                                We're committed to reducing our environmental footprint. Our packaging is 100% recyclable, and we're continuously innovating in sustainable manufacturing.
+                                We&rsquo;re committed to reducing our environmental footprint. Our packaging is 100% recyclable, and we&rsquo;re continuously innovating in sustainable manufacturing.
                             </p>
                         </div>
 
@@ -105,7 +105,7 @@ function AboutPage() {
                                 <h3 className="text-xl font-semibold text-white">Innovation</h3>
                             </div>
                             <p className="text-zinc-400 leading-relaxed">
-                                We invest heavily in R&D to bring you tomorrow's technology today. From advanced cushioning to breathable fabrics, we're always pushing boundaries.
+                                We invest heavily in R&D to bring you tomorrow&rsquo;s technology today. From advanced cushioning to breathable fabrics, we&rsquo;re always pushing boundaries.
                             </p>
                         </div>
                     </div>

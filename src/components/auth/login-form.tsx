@@ -66,7 +66,7 @@ export function LoginForm() {
         <CardTitle>Login</CardTitle>
         <CardDescription>
 
-          "Please enter your credentials to log in."
+          &quot;Please enter your credentials to log in.&quot;
 
         </CardDescription>
       </CardHeader>

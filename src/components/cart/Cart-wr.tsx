@@ -17,13 +17,14 @@ function CartWr({
     products: Array<Product & { cardQuantity: number }>
     id: string | undefined
 }) {
-
     // Client-side cart wrapper:
     // - Renders cart items and allows deleting items or checking out.
     // - Uses server actions (`deleteFromCart`, `checkout`) and optimistic
     //   transition handling via `useTransition`.
 
     const [message, setMessage] = useState<string | null>(null);
+    const [isPending, startTransition] = useTransition();
+    const [submit, setSubmit] = useState(false)
     const itemsVisible = useStaggeredAnimation(products.length, 100, 150);
 
     if (!id) {
@@ -33,9 +34,6 @@ function CartWr({
             </div>
         )
     }
-
-    const [isPending, startTransition] = useTransition();
-    const [submit, setSubmit] = useState(false)
 
     const handleDelete = (productId: string) => {
         startTransition(() => {

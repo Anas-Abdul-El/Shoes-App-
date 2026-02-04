@@ -24,7 +24,7 @@ export const checkout = async () => {
 
     // Fetch user's delivery address
     try {
-        const address = await prisma.address.findFirst({
+        await prisma.address.findFirst({
             where: {
                 userId,
             }
@@ -100,5 +100,4 @@ export const checkout = async () => {
     } catch (error) {
         return "the cart is empty"
     }
-
 }

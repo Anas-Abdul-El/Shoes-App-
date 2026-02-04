@@ -62,7 +62,7 @@ function ContactPage() {
                             Get In <span className="text-transparent bg-clip-text bg-gradient-to-r from-zinc-300 to-zinc-100">Touch</span>
                         </h1>
                         <p className={`text-lg sm:text-xl text-zinc-400 max-w-3xl mx-auto leading-relaxed transition-all duration-500 ${descriptionVisible ? 'animate-slide-up opacity-100' : 'opacity-0 translate-y-4'}`}>
-                            Have a question about our products or services? We'd love to hear from you. Our team is here to help and will get back to you as soon as possible.
+                            Have a question about our products or services? We&rsquo;d love to hear from you. Our team is here to help and will get back to you as soon as possible.
                         </p>
                     </div>
                 </div>
@@ -130,7 +130,7 @@ function ContactPage() {
                         Send us a Message
                     </h2>
                     <p className="text-zinc-400 text-center mb-12 text-lg">
-                        Fill out the form below and we'll get back to you within 24 hours.
+                        Fill out the form below and we&rsquo;ll get back to you within 24 hours.
                     </p>
 
                     <Card className={`bg-zinc-800/50 border-zinc-700 transition-all duration-500 ${formVisible ? 'animate-slide-up opacity-100' : 'opacity-0 translate-y-4'}`}>
@@ -231,7 +231,7 @@ function ContactPage() {
                                     {submitted && (
                                         <div className="p-4 rounded-lg bg-zinc-800/50 border border-zinc-700">
                                             <p className="text-zinc-300 text-center">
-                                                ✓ Thank you for reaching out! We'll get back to you soon.
+                                                ✓ Thank you for reaching out! We&rsquo;ll get back to you soon.
                                             </p>
                                         </div>
                                     )}
@@ -288,7 +288,7 @@ function ContactPage() {
             <section className="py-20 px-4 sm:px-6 lg:px-8 border-t border-zinc-800 bg-zinc-900/50">
                 <div className="max-w-4xl mx-auto text-center">
                     <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6">
-                        Can't Find What You're Looking For?
+                        Can&rsquo;t Find What You&rsquo;re Looking For?
                     </h2>
                     <p className="text-zinc-300 text-lg mb-8 leading-relaxed">
                         Check out our help center for articles, guides, and troubleshooting tips.
