@@ -110,7 +110,7 @@ function Nav({
                             className={`hover:text-gray-300 transition-all duration-500 
                                 ${(user && index === 0) && "font-bold "} `}
                         >
-                            <Link href={ele.href} className={`${(path == ele.href && !(user && index === 0)) && "border-b-solid border-b"} flex items-center space-x-1`} onClick={() => setMobileMenuOpen(false)}>
+                            <Link href={ele.href} className={`${(path == ele.href && !(user && index === 0)) && "border-b-solid border-b"} flex items-center space-x-1`} >
                                 {
                                     (user && index === 0) && (
                                         <div className="border-2 border-solid rounded-full p-1">
@@ -124,7 +124,7 @@ function Nav({
                     })
                 }
                 <li className={`transition-all duration-500 animation-delay-500 ${navVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-4'}`}>
-                    <Link href="/cart" className="hover:opacity-80 transition-opacity">
+                    <Link href="/cart" className="hover:opacity-80 transition-opacity" onClick={() => setMobileMenuOpen(false)}>
                         <ShoppingBag size={24} />
                     </Link>
                 </li>
