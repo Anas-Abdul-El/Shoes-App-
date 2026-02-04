@@ -48,7 +48,7 @@ function ItemsAdmin({ products }: { products: Products }) {
                                                 <span className='text-green-500'>price</span>: <span className='italic'>{ele.price}</span>$
                                             </p>
                                             <p>Quantity : {ele.quantity}</p>
-                                            <p className=" capitalize cursor-pointer" onClick={() => redirect(`/setting/editItems?id=${ele.id}`)}>edit</p>
+                                            <p className=" capitalize cursor-pointer" onClick={() => redirect(`/setting/editItems/${ele.id}`)}>edit</p>
                                             <p className=" capitalize cursor-pointer" onClick={() => handleDelete(ele.id)}>delete</p>
                                         </div>
                                     </div>

@@ -66,7 +66,11 @@ export default function LogAdmin({ activityLogs }: { activityLogs: GetActivityLo
                             <TableCell>{log.type}</TableCell>
                             <TableCell>{log.user?.name}</TableCell>
                             <TableCell>{log.action}</TableCell>
-                            <TableCell>{JSON.stringify(log.details).replaceAll('"', '').replaceAll('{', '').replaceAll('}', '').replaceAll(',', ', ')}</TableCell>
+                            <TableCell>
+                                {JSON.stringify(log.details)
+                                    .replaceAll('"', '').replaceAll('{', '')
+                                    .replaceAll('}', '').replaceAll(',', ', ')}
+                            </TableCell>
                             <TableCell>{`${log.createdAt}`}</TableCell>
                             <TableCell>{log.orderId}</TableCell>
                         </TableRow>

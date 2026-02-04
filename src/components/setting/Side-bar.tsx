@@ -49,14 +49,14 @@ function SideBar() {
             <nav
                 inert={!isClicked}
                 className={` sm:w-60 h-screen  py-20 bg-black transition-all
-                 ${isClicked ? "transform-[translateX(0px)]" : "sm:transform-[translateX(-240px)] transform-[translateX(-410px)]"}`}>
+                 ${isClicked ? "transform-[translateX(0px)]" : "transform-[translateX(-510px)]"}`}>
                 <div className='w-9/10 h-full flex items-start flex-col mx-auto'>
                     <div className='w-full p-3 flex flex-col space-y-10 text-white'>
 
                         {
                             links.map(e => {
                                 return <div key={e.id} className={`h-10 w-full border-b  ${link === e.content ? "border-white" : "border-[rgb(255,255,255,0.2)]"}`}>
-                                    <Link href={e.link} className='ml-2 capitalize'>{e.content}</Link>
+                                    <Link href={e.link} className='ml-2 capitalize' onClick={() => setClick(false)}>{e.content}</Link>
                                 </div>
                             })
                         }

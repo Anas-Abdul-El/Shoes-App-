@@ -1,5 +1,6 @@
 "use server"
 import prisma from "@/lib/prisma"
+import { redirect } from "next/navigation"
 
 type Category = "RUNNING" | "CASUAL" | "SPORTS" | "BOOTS"
 
@@ -10,7 +11,6 @@ export const editItem = async ({
     quantity,
     imageUrl,
     description,
-    oldPrice,
     category
 }: {
     id: string
@@ -19,12 +19,22 @@ export const editItem = async ({
     quantity: number,
     imageUrl: string,
     description: string
-    oldPrice: number
     category: Category
 }) => {
 
     try {
-        if (price > oldPrice)
+
+        const product = await prisma.product.findUnique({
+            where: {
+                id
+            },
+        })
+
+        if (!product) {
+            return { message: "the item not found", type: "error" }
+        }
+
+        if (price > product?.price)
             await prisma.product.update({
                 where: {
                     id,
@@ -32,7 +42,7 @@ export const editItem = async ({
                 data: {
                     name,
                     price,
-                    oldPrice,
+                    oldPrice: 0,
                     quantity,
                     imageUrl,
                     description,
@@ -40,11 +50,6 @@ export const editItem = async ({
                 }
             })
         else {
-            const product = await prisma.product.findUnique({
-                where: {
-                    id
-                },
-            })
 
             await prisma.product.update({
                 where: {
