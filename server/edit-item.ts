@@ -22,6 +22,9 @@ export const editItem = async ({
     category: Category
 }) => {
 
+    // Update an existing product. If the new price is higher than the
+    // previous price, `oldPrice` is reset to 0; otherwise `oldPrice` is
+    // set to the previous price value. Returns a simple status object.
     try {
 
         const product = await prisma.product.findUnique({

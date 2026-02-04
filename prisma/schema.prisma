@@ -13,6 +13,12 @@ datasource db {
   provider = "postgresql"
 }
 
+// NOTE: This schema defines the application's data model used by Prisma.
+// - `User`, `Product`, `Order`, `CartItem`, and `ActivityLog` are primary
+//   entities for e-commerce functionality.
+// - Fields use `@@map` and `@map` to preserve existing DB column/table
+//   names while keeping idiomatic Prisma naming in the app code.
+
 enum Role {
   USER
   ADMIN

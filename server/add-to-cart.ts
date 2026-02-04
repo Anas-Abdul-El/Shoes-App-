@@ -9,6 +9,9 @@ export const addToCart = async (
     formData: FormData
 ): Promise<Errors> => {
 
+    // Server action to add an item to the authenticated user's cart.
+    // Expects `productId` and `quantity` in the provided FormData.
+
     const quantity = Number(formData.get('quantity'));
     const productId = formData.get('productId') as string;
 

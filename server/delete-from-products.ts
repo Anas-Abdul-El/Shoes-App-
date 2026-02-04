@@ -3,6 +3,7 @@ import prisma from "@/lib/prisma"
 import { revalidatePath } from "next/cache";
 
 export const deleteFromProduct = async (productId: string) => {
+    // Delete a product by its id and revalidate the settings items route
     try {
         if (!productId) return { message: "Invalid product ID." };
 

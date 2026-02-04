@@ -3,6 +3,7 @@ import { auth } from "@/lib/auth"
 import prisma from "@/lib/prisma"
 import { log } from "./Log"
 
+// Server action to update the authenticated user's display name and log it.
 export const changeTheName = async (name: string) => {
 
     const user = await auth()

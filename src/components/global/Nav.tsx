@@ -24,6 +24,11 @@ function Nav({
     user: Session | null
 }) {
 
+    // Navigation component used across the site. Responsibilities:
+    // - Build a nav list that changes if the user is authenticated
+    // - Animate items into view using `useAnimation`
+    // - Provide a responsive mobile menu toggle
+
     const name = user?.user?.name
     const login = user ? ({
         id: 0,

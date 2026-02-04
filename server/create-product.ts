@@ -20,6 +20,8 @@ export const createProduct = async ({
     description: string
     category: Category
 }) => {
+    // Server action to create a new product in the database and then
+    // redirect back to the settings items page.
     try {
         await prisma.product.create({
             data: {

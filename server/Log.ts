@@ -20,7 +20,9 @@ export const log = async ({
     details?: object
     orderId?: string
 }) => {
-
+    // Persist an activity log entry associated with the current user.
+    // This function obtains the authenticated user via `auth()`; if no
+    // user is present the log will not be created.
     try {
         const user = await auth()
         if (!user || !user.id) {

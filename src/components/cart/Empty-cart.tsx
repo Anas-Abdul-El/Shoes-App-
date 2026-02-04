@@ -14,6 +14,8 @@ import { redirect } from "next/navigation"
 
 
 function EmptyCart() {
+    // Simple presentational empty-cart view that prompts user to explore
+    // collections. Uses the Empty primitives for consistent styling.
     return (
         <Empty>
             <EmptyHeader>

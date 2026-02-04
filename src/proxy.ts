@@ -11,6 +11,8 @@ import {
 async function middleware(req: NextRequest) {
     const path = req.nextUrl.pathname;
 
+    // Middleware that guards routes based on authentication and role.
+    // It uses route lists exported from `route.ts` to decide behaviour.
     const isLogin = await auth()
     const role = isLogin?.role
 

@@ -1,6 +1,9 @@
 import { useState, useEffect } from 'react'
 
 export const useAnimation = (delay: number = 0) => {
+    // Simple hook to toggle a boolean after `delay` milliseconds.
+    // Useful for entrance animations where elements become visible
+    // after a short timeout to trigger CSS transitions.
     const [isVisible, setIsVisible] = useState(false)
 
     useEffect(() => {
@@ -15,6 +18,8 @@ export const useAnimation = (delay: number = 0) => {
 }
 
 export const useStaggeredAnimation = (itemCount: number, baseDelay: number = 0, delayIncrement: number = 100) => {
+    // Returns a boolean array indicating which items are visible based
+    // on staggered timeouts. Useful to animate lists with staggered delays.
     const [visibleItems, setVisibleItems] = useState<boolean[]>(new Array(itemCount).fill(false))
 
     useEffect(() => {

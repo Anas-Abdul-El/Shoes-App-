@@ -3,6 +3,8 @@
 import { useAnimation } from "@/hooks/useAnimation"
 
 function CollectionsHeader() {
+    // Presentational header for the collections page. Uses `useAnimation`
+    // to stagger entrance animations for the title and description.
     const titleVisible = useAnimation(0)
     const descriptionVisible = useAnimation(200)
 

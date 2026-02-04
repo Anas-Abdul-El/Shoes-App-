@@ -1,7 +1,9 @@
 "use server";
 import prisma from "@/lib/prisma"
 
-// function to find product by its id
+
+// Lightweight Prisma helper functions used around the app. They wrap
+// common lookups (by id or email) to keep call sites concise.
 export const findProductsById = async (id: string) => {
 
     const product = await prisma.product.findUnique({
@@ -13,7 +15,7 @@ export const findProductsById = async (id: string) => {
     return product;
 }
 
-// function to get user by id
+// Get a user by their unique id
 export const getUserbyId = async (id: string) => {
 
     const user = await prisma.user.findUnique({
@@ -26,7 +28,7 @@ export const getUserbyId = async (id: string) => {
 }
 
 
-// function to get user by email
+// Get a user by their unique email
 export const getUserbyEmail = async (email: string) => {
 
     const user = await prisma.user.findUnique({

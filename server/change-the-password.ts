@@ -4,6 +4,8 @@ import prisma from "@/lib/prisma"
 import bcrypt from "bcrypt"
 import { log } from "./Log"
 
+// Server action to change the authenticated user's password.
+// - Verifies the old password, updates to the new password, and logs the change.
 export const changeThePassword = async (password: { oldPass: string, newPass: string }) => {
 
     const user = await auth()

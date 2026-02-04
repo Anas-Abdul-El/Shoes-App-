@@ -3,6 +3,8 @@ import prisma from "@/lib/prisma"
 import { revalidatePath } from "next/cache";
 
 export const deleteFromCart = async (userId: string, productId: string) => {
+    // Remove the cart item entry for the given user/product and
+    // revalidate the `/cart` route so server-rendered state updates.
     try {
         if (!userId || !productId) return { message: "Invalid user or product ID." };
 

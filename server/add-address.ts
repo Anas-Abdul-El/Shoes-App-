@@ -8,6 +8,9 @@ import { redirect } from "next/navigation";
 
 export const addAdress = async (address: AddressSchemaType) => {
 
+    // Server action to add a delivery address for the authenticated user.
+    // Validates the address shape and persists it to the database.
+
     const user = await auth()
 
     if (!user || !user.id) return "You must be logged in to add items to cart."

@@ -6,18 +6,21 @@ import bcrypt from "bcrypt"
 import { redirect } from "next/navigation";
 
 export async function signInAction(data: FormSchemaType & { role?: "USER" | "ADMIN" }) {
+    // Validate incoming form data using Zod schema
     const velidateData = formSchema.safeParse(data);
 
     if (!velidateData.success) return { error: "validation field" }
 
     const { email, password, name } = velidateData.data;
 
+    // Prevent duplicate accounts for the same email
     const isAccountExist = await prisma.user.findUnique({
         where: { email }
     })
 
     if (isAccountExist) return { error: "account already exist" }
 
+    // Hash the password before persisting
     const hashPassword = await bcrypt.hash(password, 10);
 
     try {
@@ -33,5 +36,6 @@ export async function signInAction(data: FormSchemaType & { role?: "USER" | "ADM
         return { error: "unexpected error :" + error }
     }
 
+    // After successful sign-up redirect to login page
     redirect("/login")
 }

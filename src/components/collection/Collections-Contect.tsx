@@ -56,7 +56,11 @@ type Products = Product[];
 
 function CollectionsContect({ products }: { products: Products }) {
 
+    // Client component that renders a filterable product grid.
+    // - `products` is loaded on the server and passed in.
+    // - Clicking a product redirects to its detail page and logs a view.
     const AviableProducts = products.filter(ele => {
+        // Keep only products with a positive `quantity` value.
         if (ele.quantity) return ele.quantity > 0
     })
 

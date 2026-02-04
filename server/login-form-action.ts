@@ -6,6 +6,8 @@ import { AuthError } from "next-auth";
 
 
 export async function loginInAction(data: LoginSchemaType) {
+
+    // Validate incoming credentials
     const velidateData = loginSchema.safeParse(data);
 
     if (!velidateData.success) return { error: "validation field" }
@@ -13,12 +15,14 @@ export async function loginInAction(data: LoginSchemaType) {
     const { email, password } = velidateData.data
 
     try {
+        // Use NextAuth signIn with credentials provider
         await signIn("credentials", {
             email,
             password,
             redirectTo: "/"
         })
     } catch (error) {
+        // Map authentication errors into a friendly response
         if (error instanceof AuthError) {
             switch (error.type) {
                 case "CredentialsSignin":

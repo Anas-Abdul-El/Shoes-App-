@@ -42,6 +42,7 @@ export function LoginForm() {
     },
   })
 
+  // Form submission state and server-transition helper
   const [isLoading, startTransition] = useTransition()
   const [error, setError] = useState<string>()
 

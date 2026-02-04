@@ -18,6 +18,11 @@ function CartWr({
     id: string | undefined
 }) {
 
+    // Client-side cart wrapper:
+    // - Renders cart items and allows deleting items or checking out.
+    // - Uses server actions (`deleteFromCart`, `checkout`) and optimistic
+    //   transition handling via `useTransition`.
+
     const [message, setMessage] = useState<string | null>(null);
     const itemsVisible = useStaggeredAnimation(products.length, 100, 150);
 
