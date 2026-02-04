@@ -2,6 +2,8 @@
 
 A full-stack e-commerce demo built with Next.js (App Router), TypeScript, Prisma and PostgreSQL. This repository contains the frontend app, server actions, and Prisma schema/migrations for managing products, users, addresses, carts and orders.
 
+the link: shoes-app-amber.vercel.app
+
 **Features**
 - Product collections and item pages
 - Cart management and checkout flow
