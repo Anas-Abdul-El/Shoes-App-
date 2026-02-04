@@ -17,7 +17,7 @@ function EmptyCart() {
     // Simple presentational empty-cart view that prompts user to explore
     // collections. Uses the Empty primitives for consistent styling.
     return (
-        <Empty>
+        <Empty className="absolute z-100">
             <EmptyHeader>
                 <EmptyMedia variant="icon">
                     <ShoppingCart />
