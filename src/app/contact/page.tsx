@@ -11,17 +11,6 @@ import { Form, FormField, FormItem, FormLabel, FormControl, FormMessage } from '
 import { Input } from '@/components/ui/input'
 import { useAnimation, useStaggeredAnimation } from '@/hooks/useAnimation'
 
-export const metadata: Metadata = {
-    title: "Contact Us - Shoes Store | Get in Touch",
-    description: "Have questions? Contact Shoes Store today. We're here to help with customer support, inquiries, and feedback.",
-    keywords: ["contact", "support", "customer service", "inquiries", "feedback"],
-    openGraph: {
-        title: "Contact Us - Shoes Store | Get in Touch",
-        description: "Contact Shoes Store today. We're here to help with customer support.",
-        type: "website",
-        url: "https://shoes-store.com/contact",
-    },
-};
 
 // Zod Schema
 const contactFormSchema = z.object({

@@ -3,17 +3,6 @@ import CartWr from '@/components/cart/Cart-wr'
 import { auth } from '@/lib/auth'
 import prisma from '@/lib/prisma'
 
-export const metadata: Metadata = {
-    title: "Shopping Cart - Shoes Store | Checkout",
-    description: "Review your shopping cart and proceed to checkout. Secure payment for premium shoes.",
-    robots: "noindex, nofollow",
-    openGraph: {
-        title: "Shopping Cart - Shoes Store",
-        description: "Review your shopping cart and proceed to checkout.",
-        type: "website",
-        url: "https://shoes-store.com/cart",
-    },
-};
 
 async function Page() {
     // Cart page: server component that loads the authenticated user's

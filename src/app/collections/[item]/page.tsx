@@ -29,7 +29,6 @@ export async function generateMetadata({ params }: { params: { item: string } })
             title: `${product.name} - Shoes Store`,
             description: product.description || `Shop ${product.name} at Shoes Store.`,
             type: "website",
-            url: `https://shoes-store.com/collections/${item}`,
             images: product.imageUrl ? [
                 {
                     url: product.imageUrl,

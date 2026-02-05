@@ -4,17 +4,6 @@ import UserSetting from '@/components/setting/User-setting'
 import { auth } from '@/lib/auth'
 import prisma from '@/lib/prisma'
 
-export const metadata: Metadata = {
-    title: "Account Settings - Shoes Store",
-    description: "Manage your Shoes Store account settings, preferences, and personal information.",
-    robots: "noindex, nofollow",
-    openGraph: {
-        title: "Account Settings - Shoes Store",
-        description: "Manage your account settings and preferences.",
-        type: "website",
-        url: "https://shoes-store.com/setting",
-    },
-};
 
 async function page() {
     // Settings page: determines whether the current user is a regular
