@@ -1,8 +1,21 @@
 'use client'
 
+import type { Metadata } from "next";
 import { Check } from 'lucide-react'
 import Image from 'next/image'
 import { useAnimation, useStaggeredAnimation } from '@/hooks/useAnimation'
+
+export const metadata: Metadata = {
+    title: "About Us - Shoes Store | Our Story & Mission",
+    description: "Learn about Shoes Store's journey. Discover our commitment to quality craftsmanship, innovation, and exceptional footwear design.",
+    keywords: ["about us", "our story", "craftsmanship", "footwear design", "shoe company"],
+    openGraph: {
+        title: "About Us - Shoes Store | Our Story & Mission",
+        description: "Learn about Shoes Store's journey and commitment to quality.",
+        type: "website",
+        url: "https://shoes-store.com/about",
+    },
+};
 
 function AboutPage() {
     // About page: presentational page with several sections that use

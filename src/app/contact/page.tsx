@@ -1,5 +1,6 @@
 'use client'
 
+import type { Metadata } from "next";
 import React, { useState } from 'react'
 import { Mail, Phone, MapPin, Send } from 'lucide-react'
 import { useForm } from 'react-hook-form'
@@ -9,6 +10,18 @@ import { Card, CardDescription, CardHeader, CardTitle } from '@/components/ui/ca
 import { Form, FormField, FormItem, FormLabel, FormControl, FormMessage } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
 import { useAnimation, useStaggeredAnimation } from '@/hooks/useAnimation'
+
+export const metadata: Metadata = {
+    title: "Contact Us - Shoes Store | Get in Touch",
+    description: "Have questions? Contact Shoes Store today. We're here to help with customer support, inquiries, and feedback.",
+    keywords: ["contact", "support", "customer service", "inquiries", "feedback"],
+    openGraph: {
+        title: "Contact Us - Shoes Store | Get in Touch",
+        description: "Contact Shoes Store today. We're here to help with customer support.",
+        type: "website",
+        url: "https://shoes-store.com/contact",
+    },
+};
 
 // Zod Schema
 const contactFormSchema = z.object({
