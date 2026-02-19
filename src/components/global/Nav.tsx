@@ -17,7 +17,6 @@ type link = {
 }
 
 
-
 function Nav({
     user,
 }: {
@@ -107,10 +106,13 @@ function Nav({
                     Links.map((ele, index) => {
                         return <li
                             key={ele.id}
+                            onClick={() => setMobileMenuOpen(false)}
                             className={`hover:text-gray-300 transition-all duration-500 
                                 ${(user && index === 0) && "font-bold "} `}
                         >
-                            <Link href={ele.href} className={`${(path == ele.href && !(user && index === 0)) && "border-b-solid border-b"} flex items-center space-x-1`} >
+                            <Link
+                                href={ele.href}
+                                className={`${(path == ele.href && !(user && index === 0)) && "border-b-solid border-b"} flex items-center space-x-1`} >
                                 {
                                     (user && index === 0) && (
                                         <div className="border-2 border-solid rounded-full p-1">
@@ -133,5 +135,6 @@ function Nav({
         </>
     )
 }
+
 
 export default Nav

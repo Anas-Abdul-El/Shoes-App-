@@ -75,7 +75,8 @@ function ItemsWr({
                                         )
                                     }
                                 </div>
-                                <div className="flex flex-col sm:w-50 space-y-3 items-center">
+                                <div className="flex flex-col w-43 space-y-3 items-center">
+                                    {isClicked && <p>{state.errors.message}</p>}
                                     <Button
                                         variant={"default"}
                                         className={`bg-black p-4 cursor-pointer w-full h-full hover:bg-zinc-700`}
@@ -110,7 +111,6 @@ function ItemsWr({
                                                     <Button type="submit" disabled={isPending}>
                                                         {isPending ? "Adding..." : "Confirm"}
                                                     </Button>
-                                                    <p>{state.errors.message}</p>
                                                 </form>
                                             </div>
                                         )
