@@ -28,7 +28,6 @@ function Nav({
     // - Animate items into view using `useAnimation`
     // - Provide a responsive mobile menu toggle
 
-    const name = user?.user?.name
     const login = user ? ({
         id: 0,
         href: "/setting?link=general",
