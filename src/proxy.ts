@@ -36,9 +36,9 @@ async function middleware(req: NextRequest) {
         return NextResponse.redirect(new URL("/login", "https://shoes-app-amber.vercel.app/"))
     }
 
-    if (isAdminRoutes && role === "ADMIN") {
+    if (isAdminRoutes && role === "USER") {
         return NextResponse.redirect(new URL("/", "https://shoes-app-amber.vercel.app/"))
-    } else if (isAdminRoutes && role === "USER") {
+    } else if (isAdminRoutes && role === "ADMIN") {
         return NextResponse.next()
     }
 }
